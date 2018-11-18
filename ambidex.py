@@ -8,7 +8,7 @@ namepool = ["Ace", "Snake", "Santa",  "Junpei",  "Seven", "9th Man",
                 "Carlos",  "Eric", "Q",
 
                 "Clover", "June", "Lotus",
-                "Alice","Phi","Luna" 
+                "Alice","Phi","Luna"
                 "Mira", "Diana",
 
                 "Olivia", "Emma", "Charlotte", "Sophia", "Aria", "Ava", "Chloe", "Zoey", "Abigail", "Amilia", "Lea",
@@ -42,6 +42,8 @@ class ABPlayer():
 def wait():
     input("Press any key to continue.")
 
+def linebreak():
+    print("-----------------")
 p1 = ABPlayer("D")
 p2 = ABPlayer("E")
 p3 = ABPlayer("S")
@@ -65,28 +67,8 @@ def intro():
         global p9
         global playertable
         print("Hello! This is a simulation for the Ambidex Game found in Zero Escape: Virtue's Last Reward.")
-        tutprompt = input("Would you like an explanation for how the game works? (Enter [Y]ES for tutorial, or press "
-                          "enter to skip.")
-        if tutprompt.upper() == "Y" or tutprompt.upper() == "YES":
-            print("The Ambidex Game, or A/B Game, is a numbers game of trust and betrayal."
-                  "\nHave you ever heard of the prisoner's dilemma? Well, this game revolves around that as a core "
-                  "gameplay mechanic."
-                  "\nThere are 9 players within the A/B Game, and each one starts with 3 BP, or Bracelet Points. The overall"
-                  "goal of the game is to reach 9 points and leave the game."
-                  "\nThe players are assigned into 6 groups: 3 PAIRs and 3 SOLOs. Each one is also assigned a color of Red, Green or Blue."
-                  "\nSo, in total, there is a Red Solo, Red Pair, Blue Solo, Blue Pair, Green Solo, and Green Pair. Still following?")
-            wait()
-            print("\nAfter the teams are laid out and assigned,"
-                  " the pairs and solos will be pitted against each other as opponents!"
-                  "Each PAIR and SOLO can choose to Ally with their opponent, or Betray them."
-                  "\nIf both the PAIR and SOLO ally, they each gain 2 BP."
-                  "\nIf the PAIR Allys and the SOLO Betrays, the SOLO gains 3 points while the members of the PAIR"
-                  " lose 2 points, and vice-versa."
-                  "\nIf both the PAIR and the SOLO decide to Betray, their scores don’t change."
-                  "\nAfter that, the scores are calculated and displayed to everybody."
-                  "\nAnyone at or below 0 BP during this time... will perish! "
-                  "Dead peoples votes will default to Ally.\nNow then, let's get this show rolling!")
-        nameprompt = input("Now then, what cast would you like as your participants? (Enter [9]99, [V]LR, [Z]TD, " 
+        print("Please read the README file in the .py file's directory for a rundown of how the game works.")
+        nameprompt = input("What cast would you like as your participants? (Enter [9]99, [V]LR, [Z]TD, "
                            "or press enter for custom names.) ")
 
 
@@ -133,6 +115,7 @@ def intro():
             p8 = ABPlayer(input("Enter the name of the eighth player. "))
             p9 = ABPlayer(input("Enter the name of the ninth player. "))
         print("Your players are: ")
+        linebreak()
         print(p1.name)
         print(p2.name)
         print(p3.name)
@@ -143,12 +126,14 @@ def intro():
         print(p8.name)
         print(p9.name)
         playertable = [p1, p2, p3, p4, p5, p6, p7, p8, p9]
-        charoverride = input("Finally, would you like to have a part in the game? You can take control of " + p1.name.upper() + " and influence their decisions in the game.\nThis is entirely optional. If you decline, " + p1.name.upper() + " will make choices randomly. (Press [Y]ES to override " + p1.name.upper + ".)")
+        print("Finally, would you like to have a part in the game? You can take control of " + p1.name.upper() + " and influence their decisions in the game.")
+        print("This is entirely optional. If you decline, " + p1.name.upper() + " will make choices randomly.")
+        charoverride = input("(Press [Y]ES to override " + p1.name.upper() + ".)")
         if charoverride.upper() == "Y" or charoverride.upper() == "YES":
             global playable
             playable = True
         print("Lettuce start the game!")
-        print("-----------------")
+
 
 
 
@@ -172,6 +157,7 @@ def shuffleteams():
     playertable[6].role = "Red Solo"
     playertable[7].role = "Blue Solo"
     playertable[8].role = "Green Solo"
+    linebreak()
     # Print the new pair/solo arrangements
     print(playertable[0].name + " and " + playertable[1].name + " are together as the Red Pair.")
     print(playertable[2].name + " and " + playertable[3].name + " are together as the Blue Pair.")
@@ -290,7 +276,7 @@ def voting():
         h = 5
         i = 8
     # recreating the AB chart from Zero 3
-    print("-----------------")
+    linebreak()
     if playertable[a].vote == "A" and playertable[c].vote == "A":
         playertable[a].points = playertable[a].points + 2
         playertable[b].points = playertable[b].points + 2
@@ -309,7 +295,7 @@ def voting():
     else:
         print(playertable[a].role + " and " + playertable[c].role + " both betrayed each other. Nothing happened with their scores.")
     time.sleep(2)
-    print("-----------------")
+    linebreak()
     if playertable[d].vote == "A" and playertable[f].vote == "A":
         playertable[d].points = playertable[d].points + 2
         playertable[e].points = playertable[e].points + 2
@@ -330,7 +316,7 @@ def voting():
     else:
         print(playertable[d].role + " and " + playertable[f].role + " both betrayed each other. Nothing happened with their scores.")
     time.sleep(2)
-    print("-----------------")
+    linebreak()
     if playertable[g].vote == "A" and playertable[i].vote == "A":
         playertable[g].points = playertable[g].points + 2
         playertable[h].points = playertable[h].points + 2
@@ -348,7 +334,7 @@ def voting():
         print(playertable[i].role + " allied while " + playertable[g].role + " betrayed. " + playertable[i].role + " loses 2 points while " + playertable[g].role + " gains 3.")
     else:
         print(playertable[g].role + " and " + playertable[i].role + " both betrayed each other. Nothing happened with their scores.")
-    print("-----------------")
+    linebreak()
     wait()
     # quickly display new scores
     print("")
@@ -394,11 +380,11 @@ def winCheck():
 
 def main():
         shuffleteams()
-        print("-----------------")
+        linebreak()
         layoutselect()
-        print("-----------------")
+        linebreak()
         voting()
-        print("-----------------")
+        linebreak()
         if not winCheck():
             main()
 
