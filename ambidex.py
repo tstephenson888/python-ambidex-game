@@ -126,9 +126,10 @@ def intro():
         print(p8.name)
         print(p9.name)
         playertable = [p1, p2, p3, p4, p5, p6, p7, p8, p9]
+        linebreak()
         print("Finally, would you like to have a part in the game? You can take control of " + p1.name.upper() + " and influence their decisions in the game.")
-        print("This is entirely optional. If you decline, " + p1.name.upper() + " will make choices randomly.")
-        charoverride = input("(Press [Y]ES to override " + p1.name.upper() + ".)")
+        print("This is entirely optional. If you decline, they will make choices randomly.")
+        charoverride = input("(Press [Y]ES to override " + p1.name + ".)")
         if charoverride.upper() == "Y" or charoverride.upper() == "YES":
             global playable
             playable = True
@@ -174,7 +175,8 @@ def layoutselect():
     print("You can choose a layout for the voting.")
     print("Layout A: Red Pair vs. Blue Solo, Blue Pair vs. Green Solo, Green Pair vs. Red Solo")
     print("Layout B: Red Pair vs. Green Solo, Blue Pair vs. Red Solo, Green Pair vs. Blue Solo")
-    print("Layout C: The same-colored Pairs and Solos vote against each other.")
+    print("Layout C: The same-colored Pairs and Solos vote against each ot9
+    9her.")
     layout = input("Or you can have the game randomly decide. What will you do? (enter [A], [B], [C], [R]ANDOM) ")
 
 
@@ -231,6 +233,13 @@ def voting():
         else:
             print("You have selected ALLY.")
             p1.vote = "A"
+
+        if p1.role = "Red Pair":
+            playertable[0].vote = p1.vote
+        if p1.role = "Blue Pair":
+            playertable[2].vote = p1.vote
+        if p1.role = "Green Pair":
+            playertable[2].vote = p1.vote
         # TODO: This works for SOLOs, but not for PAIRs. Write proper logic and handling.
     time.sleep(2)
     print("The results are in! Let's see what happens...")
@@ -363,6 +372,9 @@ def winCheck():
             if playertable[x].points <= 0:
                 if playertable[x].alive:
                     playertable[x].kill()
+                if playable:
+                    if not p1.alive:
+                        print("You died! Better luck next time.")
         for x in range(0, 9):
             if playertable[x].points >= 9:
                 playertable[x].won = True
