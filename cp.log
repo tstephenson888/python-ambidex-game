@@ -6,5 +6,5 @@ DEBUG: file: None
 DEBUG: pause: True
 DEBUG: repl: python
 DEBUG: args: ['C:\\Users\\Tyler Stephenson\\Desktop\\PyCharm Projects\\python-ambidex-game\\ambidex.py']
-INFO: return code: 1 (0x1)
-INFO: elapsed time: 2.083856
+INFO: return code: 3221225786 (0xc000013a)
+INFO: elapsed time: 12.904115
