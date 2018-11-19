@@ -133,7 +133,7 @@ def intro():
         if charoverride.upper() == "Y" or charoverride.upper() == "YES":
             global playable
             playable = True
-            print(p1.name.upper() + "
+            print(p1.name.upper() + " has been overridden.")
         print("Lettuce start the game!")
 
 
@@ -214,19 +214,19 @@ def voting():
 
     if layout.upper() == "A":
         print(playertable[0].name + " and " + playertable[1].name + " vs. " + playertable[7].name)
-        print(playertable[2].name +  " and " + playertable[3].name + " vs. " + playertable[8].name)
-        print(playertable[4].name +  " and " + playertable[5].name + " vs. " + playertable[6].name)
+        print(playertable[2].name + " and " + playertable[3].name + " vs. " + playertable[8].name)
+        print(playertable[4].name + " and " + playertable[5].name + " vs. " + playertable[6].name)
     if layout.upper() == "B":
-        print(playertable[0].name +  " and " + playertable[1].name + " vs. " + playertable[8].name)
-        print(playertable[2].name +  " and " + playertable[3].name + " vs. " + playertable[6].name)
-        print(playertable[4].name +  " and " + playertable[5].name + " vs. " + playertable[7].name)
+        print(playertable[0].name + " and " + playertable[1].name + " vs. " + playertable[8].name)
+        print(playertable[2].name + " and " + playertable[3].name + " vs. " + playertable[6].name)
+        print(playertable[4].name + " and " + playertable[5].name + " vs. " + playertable[7].name)
     if layout.upper() == "C":
         print(playertable[0].name + " and " + playertable[1].name + " vs. " + playertable[6].name)
-        print(playertable[2].name +  " and " + playertable[3].name + " vs. " + playertable[7].name)
+        print(playertable[2].name + " and " + playertable[3].name + " vs. " + playertable[7].name)
         print(playertable[4].name + " and " + playertable[5].name + " vs. " + playertable[8].name)
     abroller()
     if playable:
-        ABVote = input("Here's the big question: Will you Ally or Betray? (Enter [A] or [B]. Invalid inputs will return as Ally.")
+        ABVote = input("Here's the big question: Will you Ally or Betray? (Enter [A] or [B]. Invalid inputs will return as Ally.) ")
         if ABVote.upper() == "B":
             print("You have selected BETRAY.")
             p1.vote = "B"
@@ -240,7 +240,6 @@ def voting():
             playertable[2].vote = p1.vote
         if p1.role == "Green Pair":
             playertable[2].vote = p1.vote
-        # TODO: This works for SOLOs, but not for PAIRs. Write proper logic and handling.
     time.sleep(2)
     print("The results are in! Let's see what happens...")
     wait()
@@ -251,7 +250,7 @@ def voting():
     print("ROUND " + str(roundnum) + "!")
     roundnum = roundnum + 1
     time.sleep(1)
-    print("The resultsssssssssss!")
+    print("The resultssssss!")
     time.sleep(2)
     # assigning proper players to temp. variables depending on layout choice
     if layout.upper() == "A":
