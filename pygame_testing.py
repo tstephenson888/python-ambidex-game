@@ -4,12 +4,10 @@ class Nameplate:
     def __init__(self):
         pg.sprite.Sprite.__init__(self)
         self.font = pg.font.SysFont("None", 30)
-        self.text = ""
-        self.center = (320,240)
-
+        self.text = "TEST"
 screen = pg.display.set_mode((1000, 750))
-
-tablebg = pg.image.load("PLATES/blankchartA.png")
+layout = B
+tablebg = pg.image.load("PLATES/blankchart" + layout + ".png")
 
 bg = tablebg
 
