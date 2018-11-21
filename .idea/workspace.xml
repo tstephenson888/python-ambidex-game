@@ -14,8 +14,8 @@
       <file leaf-file-name="ambidex.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ambidex.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-387">
-              <caret line="307" column="4" selection-start-line="307" selection-start-column="4" selection-end-line="307" selection-end-column="4" />
+            <state relative-caret-position="259">
+              <caret line="285" column="77" selection-start-line="285" selection-start-column="77" selection-end-line="285" selection-end-column="77" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -61,6 +61,11 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>alive</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -314,8 +319,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ambidex.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-387">
-          <caret line="307" column="4" selection-start-line="307" selection-start-column="4" selection-end-line="307" selection-end-column="4" />
+        <state relative-caret-position="259">
+          <caret line="285" column="77" selection-start-line="285" selection-start-column="77" selection-end-line="285" selection-end-column="77" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

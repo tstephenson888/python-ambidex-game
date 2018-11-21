@@ -283,7 +283,7 @@ def voting():
             pointplate = pg.image.load(("PLATES/numbers/" + str(playertable[x].points) + ".png"))
             if not playertable[x].alive:
                 pointplate = pg.image.load(("PLATES/numbers/dead.png"))
-            screen.blit(pointplate, (initial_offset + (spacebetween * x), 370))
+            screen.blit(pointplate, (initial_offset + (spacebetween * x), 400))
 
 
 
@@ -305,7 +305,7 @@ def voting():
 
 
     # Save the picture
-    
+
     # assigning proper players to temp. variables depending on layout choice
     if layout.upper() == "A":
         a = 0
