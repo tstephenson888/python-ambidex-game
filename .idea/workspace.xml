@@ -14,8 +14,8 @@
       <file leaf-file-name="ambidex.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ambidex.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1361">
-              <caret line="204" column="29" selection-start-line="204" selection-start-column="29" selection-end-line="204" selection-end-column="29" />
+            <state relative-caret-position="176">
+              <caret line="282" column="80" selection-start-line="282" selection-start-column="80" selection-end-line="282" selection-end-column="80" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -26,8 +26,11 @@
       <file leaf-file-name="pygame_testing.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pygame_testing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="36" column="39" lean-forward="true" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
+            <state relative-caret-position="238">
+              <caret line="44" selection-start-line="44" selection-end-line="45" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -35,7 +38,7 @@
       <file leaf-file-name="basicSprite_withMultipleBoxesMe2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Unit3 SoftwareDevlopment/idea/Chap 6 Part B Codes/basicSprite_withMultipleBoxesMe2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-156">
+            <state relative-caret-position="150">
               <caret line="81" column="36" selection-start-line="81" selection-start-column="36" selection-end-line="81" selection-end-column="36" />
             </state>
           </provider>
@@ -67,9 +70,9 @@
       <list>
         <option value="$PROJECT_DIR$/table-printing.py" />
         <option value="$PROJECT_DIR$/personalities.py" />
-        <option value="$PROJECT_DIR$/ambidex.py" />
         <option value="$PROJECT_DIR$/../Unit3 SoftwareDevlopment/idea/Chap 6 Part B Codes/basicSprite_withMultipleBoxesMe2.py" />
         <option value="$PROJECT_DIR$/pygame_testing.py" />
+        <option value="$PROJECT_DIR$/ambidex.py" />
       </list>
     </option>
   </component>
@@ -113,7 +116,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.pygame_testing">
+  <component name="RunManager" selected="Python.ambidex">
     <configuration name="ambidex" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="python-ambidex-game" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -175,9 +178,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.ambidex" />
         <item itemvalue="Python.pygame_testing" />
         <item itemvalue="Python.table-printing" />
-        <item itemvalue="Python.ambidex" />
       </list>
     </recent_temporary>
   </component>
@@ -208,6 +211,40 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ambidex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3417">
+          <caret line="204" column="29" selection-start-line="204" selection-start-column="29" selection-end-line="204" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Unit3 SoftwareDevlopment/idea/Chap 6 Part B Codes/basicSprite_withMultipleBoxesMe2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="81" column="36" selection-start-line="81" selection-start-column="36" selection-end-line="81" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/personalities.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pygame_testing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ambidex.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3417">
@@ -251,13 +288,10 @@
         <state relative-caret-position="-479" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ambidex.py">
+    <entry file="file://$PROJECT_DIR$/../Unit3 SoftwareDevlopment/idea/Chap 6 Part B Codes/basicSprite_withMultipleBoxesMe2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1361">
-          <caret line="204" column="29" selection-start-line="204" selection-start-column="29" selection-end-line="204" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="150">
+          <caret line="81" column="36" selection-start-line="81" selection-start-column="36" selection-end-line="81" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -268,17 +302,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Unit3 SoftwareDevlopment/idea/Chap 6 Part B Codes/basicSprite_withMultipleBoxesMe2.py">
+    <entry file="file://$PROJECT_DIR$/ambidex.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-156">
-          <caret line="81" column="36" selection-start-line="81" selection-start-column="36" selection-end-line="81" selection-end-column="36" />
+        <state relative-caret-position="176">
+          <caret line="282" column="80" selection-start-line="282" selection-start-column="80" selection-end-line="282" selection-end-column="80" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pygame_testing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="36" column="39" lean-forward="true" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
+        <state relative-caret-position="238">
+          <caret line="44" selection-start-line="44" selection-end-line="45" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

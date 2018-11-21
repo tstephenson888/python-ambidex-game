@@ -2,6 +2,8 @@ import random
 import time
 import sys
 import datetime
+import os
+import pygame as pg
 
 namepool = ["Ace", "Snake", "Santa",  "Junpei",  "Seven", "9th Man",
                 "Sigma", "Quark", "Dio", "K",
@@ -44,15 +46,15 @@ def wait():
 
 def linebreak():
     print("-----------------")
-p1 = ABPlayer("D")
-p2 = ABPlayer("E")
-p3 = ABPlayer("S")
-p4 = ABPlayer("P")
-p5 = ABPlayer("A")
-p6 = ABPlayer("C")
-p7 = ABPlayer("I")
-p8 = ABPlayer("T")
-p9 = ABPlayer("O")
+p1 = ABPlayer("DEBUG")
+p2 = ABPlayer("DEBUG")
+p3 = ABPlayer("DEBUG")
+p4 = ABPlayer("DEBUG")
+p5 = ABPlayer("DEBUG")
+p6 = ABPlayer("DEBUG")
+p7 = ABPlayer("DEBUG")
+p8 = ABPlayer("DEBUG")
+p9 = ABPlayer("DEBUG")
 playable = False
 def intro():
     #Init players because Python likes to complain
@@ -252,6 +254,36 @@ def voting():
     time.sleep(1)
     print("The resultssssss!")
     time.sleep(2)
+
+    #chart time
+
+    screen = pg.display.set_mode((1000, 750))
+    tablebg = pg.image.load("PLATES/blankchart" + layout + ".png")
+    bg = tablebg
+    roundtitle = pg.image.load(("PLATES/r" + str(roundnum) + ".png"))
+    keepGoing = True
+    clock = pg.time.Clock()
+    while keepGoing:
+        clock.tick(10)
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                keepGoing = False
+        screen.blit(bg, (0, 0))
+        screen.blit(roundtitle, (400, 120))
+        initial_offset = 200
+        spacebetween = 80
+        for x in range (0,9):
+            if os.path.isfile("PLATES/nameplates/" + playertable[x].name + ".png"):
+                plate_exists = pg.image.load(("PLATES/nameplates/" + playertable[x].name + ".png"))
+                screen.blit(plate_exists, (initial_offset + (spacebetween * x), 320))
+                plate_exists = pg.image.load(("PLATES/nameplates/" + playertable[x].name + ".png"))
+            else:
+                customplate = pg.image.load(("PLATES/nameplates/Custom " + str((x + 1)) + ".png"))
+                screen.blit(customplate, (initial_offset + (spacebetween * x), 320))
+            points = pg.image.load(("PLATES/numbers/" + playertable[x].points + ".png"))
+    pg.display.flip()
+
+    #end chart init
     # assigning proper players to temp. variables depending on layout choice
     if layout.upper() == "A":
         a = 0
