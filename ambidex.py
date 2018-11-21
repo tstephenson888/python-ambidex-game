@@ -271,7 +271,7 @@ def voting():
         screen.blit(bg, (0, 0))
         screen.blit(roundtitle, (400, 120))
         initial_offset = 200
-        spacebetween = 80
+        spacebetween = 81
         for x in range (0,9):
             if os.path.isfile("PLATES/nameplates/" + playertable[x].name + ".png"):
                 plate_exists = pg.image.load(("PLATES/nameplates/" + playertable[x].name + ".png"))
