@@ -80,4 +80,4 @@ while keepGoing:
 
 # Hold it...
 
-# Print a picture
+# Save the picture

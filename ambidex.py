@@ -280,10 +280,32 @@ def voting():
             else:
                 customplate = pg.image.load(("PLATES/nameplates/Custom " + str((x + 1)) + ".png"))
                 screen.blit(customplate, (initial_offset + (spacebetween * x), 320))
-            points = pg.image.load(("PLATES/numbers/" + playertable[x].points + ".png"))
+            pointplate = pg.image.load(("PLATES/numbers/" + str(playertable[x].points) + ".png"))
+            if not playertable[x].alive:
+                pointplate = pg.image.load(("PLATES/numbers/dead.png"))
+            screen.blit(pointplate, (initial_offset + (spacebetween * x), 370))
+
+
+
+
     pg.display.flip()
 
     #end chart init
+
+    # Slowly show what each party voted for
+
+    # Stinger sound!!
+
+    # Quickly show the change in scores in a "sweeping motion"
+
+
+    time.sleep(5)
+
+    # Hold it...
+
+
+    # Save the picture
+    
     # assigning proper players to temp. variables depending on layout choice
     if layout.upper() == "A":
         a = 0
