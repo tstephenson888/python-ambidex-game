@@ -39,13 +39,6 @@ class ABPlayer():
     def kill(self):
         self.alive = False
         print(self.name + random.choice(deathmessage))
-
-
-def wait():
-    input("Press any key to continue.")
-
-def linebreak():
-    print("-----------------")
 p1 = ABPlayer("DEBUG")
 p2 = ABPlayer("DEBUG")
 p3 = ABPlayer("DEBUG")
@@ -55,6 +48,31 @@ p6 = ABPlayer("DEBUG")
 p7 = ABPlayer("DEBUG")
 p8 = ABPlayer("DEBUG")
 p9 = ABPlayer("DEBUG")
+class Label(pg.sprite.Sprite):
+    """Label Class (simplest version
+        Atttributes :
+            font: any pygame Font or SysFont object
+            text:  text to display
+            center:  desired positon of label center (x,y)
+    """
+    def __init__(self):
+        pg.sprite.Sprite.__init__(self)
+        self.font = pg.font.Font("Pokemon Classic.ttf", 30)
+        self.text = ""
+        self.center = (640,600)
+
+
+    def update(self):
+        self.image = self.font.render(self.text, 1, (0,0,0))
+        self.rect = self.image.get_rect()
+        self.rect.center = self.center
+
+def wait():
+    input("Press any key to continue.")
+
+def linebreak():
+    print("-----------------")
+
 playable = False
 def intro():
     #Init players because Python likes to complain
@@ -68,8 +86,12 @@ def intro():
         global p8
         global p9
         global playertable
-        print("Hello! This is a simulation for the Ambidex Game found in Zero Escape: Virtue's Last Reward.")
-        print("Please read the README file in the .py file's directory for a rundown of how the game works.")
+        pg.display.set_caption("Python Ambidex Game")
+        screen = pg.display.set_mode((1280, 720))
+        textlabel = Label
+        textlabel.center = (640,600)
+        textlabel.text = "Hello! This is a simulation for the Ambidex Game found in Zero Escape: Virtue's Last Reward."
+        textlabel.text = "Please read the README file in this .py file's directory for a rundown of how the game works."
         nameprompt = input("What cast would you like as your participants? (Enter [9]99, [V]LR, [Z]TD, "
                            "or press enter for custom names.) ")
 
@@ -204,6 +226,9 @@ def abroller():
 def voting():
     global layout
     global playertable
+    if layout != "A" or layout != "B" or layout != "C" or layout != "R":
+        layout = input("That is not a valid input. Please try again. (enter [A], [B], [C], [R]ANDOM) ")
+        voting()
     if layout.upper() == "R":
         temp = random.randint(1, 3)
         if temp == 1:
@@ -257,63 +282,6 @@ def voting():
 
     #chart time
 
-    screen = pg.display.set_mode((1000, 750))
-    tablebg = pg.image.load("PLATES/blankchart" + layout + ".png")
-    bg = tablebg
-    roundtitle = pg.image.load(("PLATES/r" + str(roundnum) + ".png"))
-    keepGoing = True
-    clock = pg.time.Clock()
-    while keepGoing:
-        clock.tick(60)
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                keepGoing = False
-        screen.blit(bg, (0, 0))
-        screen.blit(roundtitle, (400, 120))
-        initial_offset = 150
-        for x in range (0,9):
-            if os.path.isfile("PLATES/nameplates/" + playertable[x].name + ".png"):
-                plate_exists = pg.image.load(("PLATES/nameplates/" + playertable[x].name + ".png"))
-                screen.blit(plate_exists, (initial_offset + (100 * x) + 75, 345))
-                plate_exists = pg.image.load(("PLATES/nameplates/" + playertable[x].name + ".png"))
-            else:
-                customplate = pg.image.load(("PLATES/nameplates/Custom " + str((x + 1)) + ".png"))
-                screen.blit(customplate, (initial_offset + (100 * x) + 25, 345))
-            pointplate = pg.image.load(("PLATES/numbers/" + str(playertable[x].points) + ".png"))
-            if not playertable[x].alive:
-                pointplate = pg.image.load(("PLATES/numbers/dead.png"))
-            screen.blit(pointplate, (100 + (80 * x) + 100, 400))
-    #end chart init
-            time.sleep(2)
-
-
-
-
-
-
-
-
-    # Slowly show what each party voted for w/ sound
-    voteplate1 = pg.image.load("PLATES/numbers/" + playertable[0].vote + ".png", (200,465))
-    voteplate2 = pg.image.load("PLATES/numbers/" + playertable[2].vote + ".png", (500,465))
-    voteplate3 = pg.image.load("PLATES/numbers/" + playertable[4].vote + ".png", (800,465))
-    voteplate4 = pg.image.load("PLATES/numbers/" + playertable[6].vote + ".png")
-    voteplate5 = pg.image.load("PLATES/numbers/" + playertable[7].vote + ".png")
-    voteplate6 = pg.image.load("PLATES/numbers/" + playertable[8].vote + ".png")
-    vplategroup =  pg.sprite.Group[voteplate1, voteplate2, voteplate3,voteplate4,voteplate5,voteplate6]
-    screen.blit(vplategroup, )
-
-    # Stinger sound!!
-
-    # Quickly show the change in scores in a "sweeping motion"
-
-    pg.image.save(bg, "ABGAME_TABLE_" + datetime.now + ".png")
-    time.sleep(5)
-
-    # Hold it...
-
-    pg.display.flip()
-    # Save the picture
 
 
     # assigning proper players to temp. variables depending on layout choice
@@ -414,7 +382,7 @@ def voting():
 
     print("")
     for index in range(0,8):
-        pointplate2 = pg.image.load(("PLATES/numbers/" + str(playertable[x].points) + ".png"))
+        pointplate2 = pg.image.load(("PLATES/numbers/" + str(playertable[x].points) + ".png"), )
         if not playertable[x].alive:
             pointplate2 = pg.image.load(("PLATES/numbers/dead.png"))
     screen.blit(pointplate2, (200 + (82 * x), 475))
