@@ -1,4 +1,4 @@
-screen = pg.display.set_mode((1000, 750))
+    screen = pg.display.set_mode((1000, 750))
     tablebg = pg.image.load("PLATES/blankchart" + layout + ".png")
     bg = tablebg
     roundtitle = pg.image.load(("PLATES/r" + str(roundnum) + ".png"))

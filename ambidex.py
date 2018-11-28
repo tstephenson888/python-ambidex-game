@@ -74,6 +74,25 @@ def linebreak():
     print("-----------------")
 
 playable = False
+
+def setup():
+    pg.display.set_caption("Python Ambidex Game")
+    screen = pg.display.set_mode((1280, 720))
+
+    bg = pg.Surface(screen.get_size())
+    bg = bg.convert()
+    bg.fill((255,255,0))
+
+    clock = pg.time.Clock()
+    keepGoing = True
+    while keepGoing:
+        clock.tick(30)
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                keepGoing = False
+        screen.blit(bg, (0, 0))
+        pg.display.flip()
+
 def intro():
     #Init players because Python likes to complain
         global p1
@@ -86,12 +105,9 @@ def intro():
         global p8
         global p9
         global playertable
-        pg.display.set_caption("Python Ambidex Game")
-        screen = pg.display.set_mode((1280, 720))
-        textlabel = Label
-        textlabel.center = (640,600)
-        textlabel.text = "Hello! This is a simulation for the Ambidex Game found in Zero Escape: Virtue's Last Reward."
-        textlabel.text = "Please read the README file in this .py file's directory for a rundown of how the game works."
+
+        print("Hello! This is a simulation for the Ambidex Game found in Zero Escape: Virtue's Last Reward.")
+        print("Please read the README file in this .py file's directory for a rundown of how the game works.")
         nameprompt = input("What cast would you like as your participants? (Enter [9]99, [V]LR, [Z]TD, "
                            "or press enter for custom names.) ")
 
@@ -381,14 +397,7 @@ def voting():
 
 
     print("")
-    for index in range(0,8):
-        pointplate2 = pg.image.load(("PLATES/numbers/" + str(playertable[x].points) + ".png"), )
-        if not playertable[x].alive:
-            pointplate2 = pg.image.load(("PLATES/numbers/dead.png"))
-    screen.blit(pointplate2, (200 + (82 * x), 475))
     print(playertable[a].name + ": " + str(playertable[a].points))
-
-
     time.sleep(0.15)
     print(playertable[b].name + ": " + str(playertable[b].points))
     time.sleep(0.15)
@@ -443,5 +452,4 @@ def main():
 
 
 
-intro()
-main()
+setup()
