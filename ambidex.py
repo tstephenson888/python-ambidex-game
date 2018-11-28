@@ -4,7 +4,7 @@ import sys
 import datetime
 import os
 import pygame as pg
-
+pg.init()
 namepool = ["Ace", "Snake", "Santa",  "Junpei",  "Seven", "9th Man",
                 "Sigma", "Quark", "Dio", "K",
                 "Carlos",  "Eric", "Q",
@@ -48,6 +48,7 @@ p6 = ABPlayer("DEBUG")
 p7 = ABPlayer("DEBUG")
 p8 = ABPlayer("DEBUG")
 p9 = ABPlayer("DEBUG")
+f1 = pg.font.Font("Pokemon Classic.ttf", 32)
 class Label(pg.sprite.Sprite):
     """Label Class (simplest version
         Atttributes :
@@ -57,7 +58,7 @@ class Label(pg.sprite.Sprite):
     """
     def __init__(self):
         pg.sprite.Sprite.__init__(self)
-        self.font = pg.font.Font("Pokemon Classic.ttf", 30)
+        self.font = pg.font.Font(f1, 32)
         self.text = ""
         self.center = (640,600)
 
@@ -76,13 +77,17 @@ def linebreak():
 playable = False
 
 def setup():
+
     pg.display.set_caption("Python Ambidex Game")
     screen = pg.display.set_mode((1280, 720))
 
     bg = pg.Surface(screen.get_size())
     bg = bg.convert()
     bg.fill((255,255,0))
-
+    textbox = Label
+    textbox.font = (f1, 48)
+    textbox.center = 640,600
+    textbox.text = "TEST STRING"
     clock = pg.time.Clock()
     keepGoing = True
     while keepGoing:
@@ -91,6 +96,7 @@ def setup():
             if event.type == pg.QUIT:
                 keepGoing = False
         screen.blit(bg, (0, 0))
+
         pg.display.flip()
 
 def intro():
