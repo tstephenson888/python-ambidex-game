@@ -48,7 +48,7 @@ p6 = ABPlayer("DEBUG")
 p7 = ABPlayer("DEBUG")
 p8 = ABPlayer("DEBUG")
 p9 = ABPlayer("DEBUG")
-f1 = pg.font.Font("Pokemon Classic.ttf", 32)
+pk = pg.font.SysFont("Pokemon Classic.ttf",40)
 class Label(pg.sprite.Sprite):
     """Label Class (simplest version
         Atttributes :
@@ -58,15 +58,57 @@ class Label(pg.sprite.Sprite):
     """
     def __init__(self):
         pg.sprite.Sprite.__init__(self)
-        self.font = pg.font.Font(f1, 32)
+        self.font = pg.font.SysFont(pk, 40)
         self.text = ""
-        self.center = (640,600)
+        self.center = (320,240)
 
 
     def update(self):
         self.image = self.font.render(self.text, 1, (0,0,0))
         self.rect = self.image.get_rect()
         self.rect.center = self.center
+
+class Button(pg.sprite.Sprite):
+    def __init__(self, text = "", posx = 320, posy = 240, color = (255,0,0)):
+        pg.sprite.Sprite.__init__(self)
+        self.image = pg.Surface((50,50))
+        self.image.fill((color))
+        self.font = pg.font.SysFont("None", 48)
+        self.text = text
+        self.center = (posx,posy)
+        self.background = (0,118,163)
+        self.mouse = pg.mouse.get_pos()
+
+    def update(self):
+        '''create an image based on the font and text'''
+        self.image = self.font.render(self.text, 1, (0,0,0), self.background)
+        self.rect = self.image.get_rect()       #set the rectangle to be the size of the image.
+        self.rect.center = self.center          #position the button
+        self.mouse = pg.mouse.get_pos()
+        self.check_hover()            #check if mouse is hovering
+        self.color()                            #change color of background of label
+
+
+    def check_hover(self):
+      '''adjust is_hover value based on mouse over button - to change hover color'''
+      if self.rect.collidepoint(self.mouse):
+         self.is_hover = True
+      else:
+         self.is_hover = False
+
+    def color(self):
+      '''change color when hovering'''
+      if self.is_hover  == True:
+         self.background = (0,84,166)
+      else:
+         self.background = (57,181,74)
+
+    def click(self):
+        '''return true or false based on mouse over the button '''
+        if self.rect.collidepoint(self.mouse):
+            return True
+        else:
+            return False
 
 def wait():
     input("Press any key to continue.")
@@ -75,19 +117,20 @@ def linebreak():
     print("-----------------")
 
 playable = False
+screen = pg.display.set_mode((1280, 720))
 
 def setup():
 
     pg.display.set_caption("Python Ambidex Game")
-    screen = pg.display.set_mode((1280, 720))
+    global screen
 
     bg = pg.Surface(screen.get_size())
     bg = bg.convert()
-    bg.fill((255,255,0))
-    textbox = Label
-    textbox.font = (f1, 48)
-    textbox.center = 640,600
-    textbox.text = "TEST STRING"
+    bg.fill((0,118,163))
+    start = Button('Start Game', 320, 600)
+    readme = Button("Explanation/Rules", 640,600)
+    quit = Button("Close Game", 960,600)
+    introButtons = pg.sprite.Group(start,readme,quit)
     clock = pg.time.Clock()
     keepGoing = True
     while keepGoing:
@@ -95,10 +138,26 @@ def setup():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 keepGoing = False
+            elif event.type == pg.MOUSEBUTTONDOWN:
+                if start.click():
+                    print('button 1 clicked')
+                    introButtons.remove()
+                    gfxIntro()
+                if readme.click():
+                    os.open("README.txt",os.O_RDONLY)
+                if quit.click():
+                    exit()
         screen.blit(bg, (0, 0))
-
+        introButtons.clear(screen, bg)
+        introButtons.update()
+        introButtons.draw(screen)
+        pg.mouse.set_visible(True)
         pg.display.flip()
 
+def gfxIntro():
+    global screen
+    maintext = pk.render("Test text!", 1,  (0,0,0))
+    screen.blit(maintext, (100,100))
 def intro():
     #Init players because Python likes to complain
         global p1
