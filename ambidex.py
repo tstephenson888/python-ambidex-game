@@ -136,7 +136,7 @@ def setup():
     start = Button('Start Game', 320, 600)
     readme = Button("Explanation/Rules", 640,600)
     quit = Button("Close Game", 960,600)
-    titlestuff = pg.sprite.Group(titlegfx,titlegfx2,titlegfx3)
+    # titlestuff = pg.sprite.Group(titlegfx,titlegfx2,titlegfx3)
     introButtons = pg.sprite.Group(start,readme,quit)
     clock = pg.time.Clock()
     keepGoing = True
@@ -147,7 +147,7 @@ def setup():
                 keepGoing = False
             elif event.type == pg.MOUSEBUTTONDOWN:
                 if start.click():
-                    print('button 1 clicked')
+                    print('start clicked')
                     introButtons.remove()
                     gfxIntro()
                 if readme.click():
