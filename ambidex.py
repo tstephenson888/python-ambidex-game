@@ -127,6 +127,10 @@ def setup():
     bg = pg.Surface(screen.get_size())
     bg = bg.convert()
     bg.fill((0,118,163))
+    titlegfx = pg.image.load(("PLATES/title.png"))
+    titlegfx = titlegfx.convert_alpha()
+    titlegfx2 = pg.image.load(("PLATES/subtitle.png"))
+    titlegfx2 = titlegfx2.convert_alpha()
     start = Button('Start Game', 320, 600)
     readme = Button("Explanation/Rules", 640,600)
     quit = Button("Close Game", 960,600)
@@ -148,6 +152,8 @@ def setup():
                 if quit.click():
                     exit()
         screen.blit(bg, (0, 0))
+        bg.blit(titlegfx, (400,113))
+        bg.blit(titlegfx2, (393,250))
         introButtons.clear(screen, bg)
         introButtons.update()
         introButtons.draw(screen)
@@ -240,9 +246,6 @@ def intro():
             playable = True
             print(p1.name.upper() + " has been overridden.")
         print("Lettuce start the game!")
-
-
-
 
 playertable = [p1, p2, p3, p4, p5, p6, p7, p8, p9]
 layout = "R"
