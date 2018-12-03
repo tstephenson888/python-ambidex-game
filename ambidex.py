@@ -58,7 +58,7 @@ class Label(pg.sprite.Sprite):
     """
     def __init__(self):
         pg.sprite.Sprite.__init__(self)
-        self.font = pg.font.SysFont(pk, 40)
+        self.font = pg.font.SysFont("None", 32)
         self.text = ""
         self.center = (320,240)
 
@@ -127,16 +127,15 @@ def setup():
     bg = pg.Surface(screen.get_size())
     bg = bg.convert()
     bg.fill((0,118,163))
-    titlegfx = pg.image.load(("PLATES/title.png"))
+    titlegfx = pg.image.load(("img/UI/title.png"))
     titlegfx = titlegfx.convert_alpha()
-    titlegfx2 = pg.image.load(("PLATES/subtitle.png"))
+    titlegfx2 = pg.image.load(("img/UI/subtitle.png"))
     titlegfx2 = titlegfx2.convert_alpha()
-    titlegfx3 = pg.image.load(("PLATES/sub2.png"))
+    titlegfx3 = pg.image.load(("img/UI/sub2.png"))
     titlegfx3 = titlegfx3.convert_alpha()
     start = Button('Start Game', 320, 600)
     readme = Button("Explanation/Rules", 640,600)
     quit = Button("Close Game", 960,600)
-    # titlestuff = pg.sprite.Group(titlegfx,titlegfx2,titlegfx3)
     introButtons = pg.sprite.Group(start,readme,quit)
     clock = pg.time.Clock()
     keepGoing = True
@@ -164,10 +163,35 @@ def setup():
         pg.mouse.set_visible(True)
         pg.display.flip()
 
-def gfxIntro():
+
+def setup2():
+    pg.display.set_caption("Python Ambidex Game")
     global screen
-    maintext = pk.render("Test text!", 1,  (0,0,0))
-    screen.blit(maintext, (100,100))
+
+    bg = pg.Surface(screen.get_size())
+    bg = bg.convert()
+    bg.fill((0,118,163))
+    textBox = pg.image.load(("img/UI/textBox.png"))
+    textBox = textBox.convert_alpha()
+    nameBox = pg.image.load(("img/UI/nameBox.png"))
+    tempFont = pg.font.SysFont('None', 32)
+    nameBox = nameBox.convert_alpha()
+    nvlName = Label
+    nvlText = Label
+    clock = pg.time.Clock()
+    keepGoing = True
+    while keepGoing:
+        clock.tick(30)
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                keepGoing = False
+        screen.blit(bg, (0, 0))
+
+        bg.blit(nameBox,(200,500))
+        bg.blit(textBox,(100,550))
+        pg.mouse.set_visible(True)
+        pg.display.flip()
+
 def intro():
     #Init players because Python likes to complain
         global p1
@@ -496,7 +520,9 @@ def winCheck():
                     playertable[x].kill()
                 if playable:
                     if not p1.alive:
-                        print("You died! Better luck next time.")
+                        print("You died! Better luck next time...")
+                        wait()
+                        quit()
         for x in range(0, 9):
             if playertable[x].points >= 9:
                 playertable[x].won = True
@@ -524,4 +550,4 @@ def main():
 
 
 
-setup()
+setup2()
