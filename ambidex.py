@@ -58,13 +58,13 @@ class Label(pg.sprite.Sprite):
     """
     def __init__(self):
         pg.sprite.Sprite.__init__(self)
-        self.font = pg.font.SysFont("None", 32)
+        self.font = pg.font.SysFont("None", 48)
         self.text = ""
         self.center = (320,240)
 
 
     def update(self):
-        self.image = self.font.render(self.text, 1, (0,0,0))
+        self.image = self.font.render(self.text, 1, (255,255,255))
         self.rect = self.image.get_rect()
         self.rect.center = self.center
 
@@ -176,8 +176,11 @@ def setup2():
     nameBox = pg.image.load(("img/UI/nameBox.png"))
     tempFont = pg.font.SysFont('None', 32)
     nameBox = nameBox.convert_alpha()
-    nvlName = Label
-    nvlText = Label
+    nvlName = Label()
+    nvlText = Label()
+    nvlText.text = "Yeet Yeet beat my meat"
+    nvlText.center = (640,600)
+    textgroup = pg.sprite.Group(nvlText,nvlName)
     clock = pg.time.Clock()
     keepGoing = True
     while keepGoing:
@@ -189,9 +192,16 @@ def setup2():
 
         bg.blit(nameBox,(200,500))
         bg.blit(textBox,(100,550))
+        textgroup.update()
+        textgroup.draw(screen)
+        # bg.blit(nvlText,nvlText.get_rect())
         pg.mouse.set_visible(True)
         pg.display.flip()
 
+def gfxIntro():
+    global screen
+    maintext = pk.render("Test text!", 1,  (0,0,0))
+    screen.blit(maintext, (100,100))
 def intro():
     #Init players because Python likes to complain
         global p1
