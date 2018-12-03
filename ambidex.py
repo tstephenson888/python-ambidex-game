@@ -58,7 +58,7 @@ class Label(pg.sprite.Sprite):
     """
     def __init__(self):
         pg.sprite.Sprite.__init__(self)
-        self.font = pg.font.SysFont("None", 48)
+        self.font = pg.font.SysFont("None", 40 )
         self.text = ""
         self.center = (320,240)
 
@@ -177,8 +177,10 @@ def setup2():
     tempFont = pg.font.SysFont('None', 32)
     nameBox = nameBox.convert_alpha()
     nvlName = Label()
+    nvlName.text = "Name"
+    nvlName.center = (285,530)
     nvlText = Label()
-    nvlText.text = "Yeet Yeet beat my meat"
+    nvlText.text = "Lorem Ispum si dolor amet..."
     nvlText.center = (640,600)
     textgroup = pg.sprite.Group(nvlText,nvlName)
     clock = pg.time.Clock()
