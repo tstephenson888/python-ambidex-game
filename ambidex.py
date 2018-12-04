@@ -174,7 +174,6 @@ def setup2():
     textBox = pg.image.load(("img/UI/textBox.png"))
     textBox = textBox.convert_alpha()
     nameBox = pg.image.load(("img/UI/nameBox.png"))
-    tempFont = pg.font.SysFont('None', 32)
     nameBox = nameBox.convert_alpha()
     nvlName = Label()
     nvlName.text = "Name"
@@ -200,10 +199,28 @@ def setup2():
         pg.mouse.set_visible(True)
         pg.display.flip()
 
-def gfxIntro():
+def imgChart():
+    pg.display.set_caption("Python Ambidex Game")
     global screen
-    maintext = pk.render("Test text!", 1,  (0,0,0))
-    screen.blit(maintext, (100,100))
+    roundnum = 3
+    bg = pg.image.load(("img/chartstuff/blankchart" + layout.upper() + ".png"))
+    roundtitle = pg.image.load(("img/chartstuff/r" + str(roundnum) + ".png"))
+    clock = pg.time.Clock()
+    keepGoing = True
+    while keepGoing:
+        clock.tick(30)
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                keepGoing = False
+        screen.blit(bg, (0, 0))
+
+        # bg.blit(nvlText,nvlText.get_rect())
+        pg.mouse.set_visible(True)
+        pg.display.flip()
+        screen.blit(bg, (0, 0))
+        screen.blit(roundtitle, (400, 120))
+        
+
 def intro():
     #Init players because Python likes to complain
         global p1
@@ -278,7 +295,7 @@ def intro():
         print(p9.name)
         playertable = [p1, p2, p3, p4, p5, p6, p7, p8, p9]
         linebreak()
-        print("Finally, would you like to have a part in the game? You can take control of your first player (" + p1.name.upper() + ") and influence their decisions in the game.")
+        print("Finally, would you like to have a part in the game? You can take control of your first player (" + p1.name + ") and influence their decisions in the game.")
         print("This is entirely optional. If you decline, they will make choices randomly.")
         charoverride = input("(Press [Y]ES to override " + p1.name + ".)")
         if charoverride.upper() == "Y" or charoverride.upper() == "YES":
@@ -327,7 +344,15 @@ def layoutselect():
     print("Layout C: The same-colored Pairs and Solos vote against each other.")
     layout = input("Or you can have the game randomly decide. What will you do? (enter [A], [B], [C], [R]ANDOM) ")
 
+def ABbuttons():
+    pg.display.set_caption("Python Ambidex Game")
+    global screen
 
+    bg = pg.Surface(screen.get_size())
+    bg = bg.convert()
+    bg.fill((0,118,163))
+    ally = Button('A: ALLY', (640, 300))
+    betray = Button("B: BETRAY", (640, 500))
 def abroller():
     #RNG time
     for index in range(0,8):
@@ -468,7 +493,7 @@ def voting():
     elif playertable[d].vote == "A" and playertable[f].vote == "B":
         playertable[d].points = playertable[d].points - 2
         playertable[e].points = playertable[e].points - 2
-        playertable[f].points = playertable[f].points+ 3
+        playertable[f].points = playertable[f].points + 3
         print(playertable[d].role + " allied while " + playertable[f].role + " betrayed. " + playertable[
             a].role + " loses 2 points while " + playertable[f].role + " gains 3.")
     elif playertable[d].vote == "B" and playertable[f].vote == "A":
@@ -551,6 +576,7 @@ def winCheck():
 
 
 def main():
+        intro()
         shuffleteams()
         linebreak()
         layoutselect()
@@ -560,6 +586,8 @@ def main():
         if not winCheck():
             main()
 
-
-
-setup2()
+intro()
+shuffleteams()
+linebreak()
+layoutselect()
+imgChart()
