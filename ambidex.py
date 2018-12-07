@@ -1,9 +1,9 @@
+import os
 import random
 import time
-import sys
-import datetime
-import os
+
 import pygame as pg
+
 pg.init()
 namepool = ["Ace", "Snake", "Santa",  "Junpei",  "Seven", "9th Man",
                 "Sigma", "Quark", "Dio", "K",
@@ -148,7 +148,6 @@ def setup():
                 if start.click():
                     print('start clicked')
                     introButtons.remove()
-                    gfxIntro()
                 if readme.click():
                     os.open("README.txt",os.O_RDONLY)
                 if quit.click():
@@ -173,15 +172,18 @@ def setup2():
     bg.fill((0,118,163))
     textBox = pg.image.load(("img/UI/textBox.png"))
     textBox = textBox.convert_alpha()
-    nameBox = pg.image.load(("img/UI/nameBox.png"))
-    nameBox = nameBox.convert_alpha()
-    nvlName = Label()
-    nvlName.text = "Name"
-    nvlName.center = (285,530)
+    # nameBox = pg.image.load(("img/UI/nameBox.png"))
+    # nameBox = nameBox.convert_alpha()
+    # nvlName = Label()
+    # nvlName.text = "Name"
+    # nvlName.center = (285,530)
     nvlText = Label()
-    nvlText.text = "Lorem Ispum si dolor amet..."
+    nvlText.text = "Select your participants."
     nvlText.center = (640,600)
-    textgroup = pg.sprite.Group(nvlText,nvlName)
+    buttonA = Button("Cast A [999]", (960,180))
+    buttonB = Button("Cast B [Virtue's Last Reward]", (960,360))
+    buttonC = Button("Cast C [Zero Time Dilemma]", (960,540))
+    buttonGroup = pg.sprite.Group(buttonA,buttonB,buttonC)
     clock = pg.time.Clock()
     keepGoing = True
     while keepGoing:
@@ -189,22 +191,108 @@ def setup2():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 keepGoing = False
-        screen.blit(bg, (0, 0))
+            elif event.type == pg.MOUSEBUTTONDOWN:
+                if buttonA.click():
+                    p1 = ABPlayer("Junpei")
+                    p2 = ABPlayer("June")
+                    p3 = ABPlayer("Ace")
+                    p4 = ABPlayer("Snake")
+                    p5 = ABPlayer("Santa")
+                    p6 = ABPlayer("Clover")
+                    p7 = ABPlayer("Seven")
+                    p8 = ABPlayer("Lotus")
+                    p9 = ABPlayer("9th Man")
+                if buttonB.click():
+                    p1 = ABPlayer("Sigma")
+                    p2 = ABPlayer("Phi")
+                    p5 = ABPlayer("Alice")
+                    p4 = ABPlayer("Clover")
+                    p3 = ABPlayer("K")
+                    p6 = ABPlayer("Luna")
+                    p7 = ABPlayer("Tenmyouji")
+                    p8 = ABPlayer("Quark")
+                    p9 = ABPlayer("Dio")
+                if buttonC.click():
+                    p1 = ABPlayer("Carlos")
+                    p2 = ABPlayer("Akane")
+                    p3 = ABPlayer("Junpei")
+                    p4 = ABPlayer("Sigma")
+                    p5 = ABPlayer("Phi")
+                    p6 = ABPlayer("Diana")
+                    p7 = ABPlayer("Q")
+                    p8 = ABPlayer("Mira")
+                    p9 = ABPlayer("Eric")
 
-        bg.blit(nameBox,(200,500))
+        screen.blit(bg, (0, 0))
         bg.blit(textBox,(100,550))
-        textgroup.update()
-        textgroup.draw(screen)
-        # bg.blit(nvlText,nvlText.get_rect())
+        buttonGroup.clear(screen, bg)
+        buttonGroup.update()
+        buttonGroup.draw(screen)
+
+        bg.blit(nvlText,nvlText.get_rect())
         pg.mouse.set_visible(True)
         pg.display.flip()
-
+def partOverview:
+    while keepGoing:
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                keepGoing = False
+    textlabel = Label
+    textlabel.text = "Your participants are:"
+    textlabel.center = (320,270)
+    part1 = Label
+    part1.text = playertable[0].name
+    part1.center = (960,60)
+    part2 = Label
+    part2.text = playertable[1].name
+    part2.center = (960,140)
+    part3 = Label
+    part3.text = playertable[2].name
+    part3.center = (960,220)
+    part4 = Label
+    part4.text = playertable[3].name
+    part4.center = (960,300)
+    part5 = Label
+    part5.text = playertable[4].name
+    part5.center = (960,380)
+    part6 = Label
+    part6.text = playertable[5].name
+    part6.center = (960,460)
+    part7 = Label
+    part7.text = playertable[6].name
+    part7.center = (960,540)
+    part8 = Label
+    part8.text = playertable[7].name
+    part8.center = (960,620)
+    part9 = Label
+    part9.text = playertable[8].name
+    part9.center = (960,700)
 def imgChart():
     pg.display.set_caption("Python Ambidex Game")
     global screen
     roundnum = 3
+    p1 = ABPlayer("Carlos")
+    p2 = ABPlayer("Akane")
+    p3 = ABPlayer("Junpei")
+    p4 = ABPlayer("Sigma")
+    p5 = ABPlayer("Phi")
+    p6 = ABPlayer("Diana")
+    p7 = ABPlayer("Q")
+    p8 = ABPlayer("Mira")
+    p9 = ABPlayer("Eric")
+    layout = "A"
+    custom_count = 0
     bg = pg.image.load(("img/chartstuff/blankchart" + layout.upper() + ".png"))
     roundtitle = pg.image.load(("img/chartstuff/r" + str(roundnum) + ".png"))
+    for x in 0,8:
+        custom_count = custom_count + 1
+        if os.path.isfile("img/nameplates/" + playertable[x].name + ".png"):
+            gfxABName1 = pg.image.load(("img/nameplates/" + playertable[x].name + ".png"))
+        else:
+            gfxABName1 = pg.image.load(("img/nameplates/Custom " + str(custom_count) + ".png"))
+        if not os.path.isfile("img/nameplates/" + playertable[0].name + ".png"):
+            gfxABName1 = pg.image.load(("img/nameplates/Custom " + str(custom_count) + ".png"))
+
     clock = pg.time.Clock()
     keepGoing = True
     while keepGoing:
@@ -216,10 +304,10 @@ def imgChart():
 
         # bg.blit(nvlText,nvlText.get_rect())
         pg.mouse.set_visible(True)
-        pg.display.flip()
         screen.blit(bg, (0, 0))
         screen.blit(roundtitle, (400, 120))
-        
+        screen.blit(gfxABName1, (207,232))
+        pg.display.flip()
 
 def intro():
     #Init players because Python likes to complain
@@ -375,7 +463,7 @@ def abroller():
 def voting():
     global layout
     global playertable
-    if layout != "A" or layout != "B" or layout != "C" or layout != "R":
+    if layout != "A" and layout != "B" and layout != "C" and layout != "R":
         layout = input("That is not a valid input. Please try again. (enter [A], [B], [C], [R]ANDOM) ")
         voting()
     if layout.upper() == "R":
@@ -586,8 +674,4 @@ def main():
         if not winCheck():
             main()
 
-intro()
-shuffleteams()
-linebreak()
-layoutselect()
-imgChart()
+setup2()
