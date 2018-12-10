@@ -17,8 +17,8 @@
       <file leaf-file-name="ambidex.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ambidex.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="197" column="51" selection-start-line="197" selection-start-column="51" selection-end-line="197" selection-end-column="51" />
+            <state relative-caret-position="2224">
+              <caret line="236" column="41" selection-start-line="236" selection-start-column="41" selection-end-line="236" selection-end-column="41" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -29,10 +29,9 @@
       <file leaf-file-name="ambidex_old_text.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ambidex_old_text.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" selection-start-line="18" selection-end-line="26" selection-end-column="22" />
+            <state>
+              <caret column="9" selection-start-column="9" selection-end-column="9" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#3487#4487#0" />
                 <element signature="e#4514#4970#0" />
                 <element signature="e#4993#5229#0" />
@@ -41,15 +40,6 @@
                 <element signature="e#13857#14642#0" />
                 <element signature="e#14666#14842#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ligma.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ligma.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -658,10 +648,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ambidex_old_text.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" selection-start-line="18" selection-end-line="26" selection-end-column="22" />
+        <state>
+          <caret column="9" selection-start-column="9" selection-end-column="9" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#3487#4487#0" />
             <element signature="e#4514#4970#0" />
             <element signature="e#4993#5229#0" />
@@ -675,8 +664,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ambidex.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="197" column="51" selection-start-line="197" selection-start-column="51" selection-end-line="197" selection-end-column="51" />
+        <state relative-caret-position="2224">
+          <caret line="236" column="41" selection-start-line="236" selection-start-column="41" selection-end-line="236" selection-end-column="41" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

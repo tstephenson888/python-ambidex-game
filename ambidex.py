@@ -235,7 +235,6 @@ def setup2():
                     p7 = ABPlayer("Q")
                     p8 = ABPlayer("Mira")
                     p9 = ABPlayer("Eric")
-
         screen.blit(bg, (0, 0))
         bg.blit(textBox,(100,550))
         buttonGroup.clear(screen, bg)
