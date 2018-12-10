@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/ambidex.py" line="130" mnemonic="9" />
+    <bookmark url="file://$PROJECT_DIR$/ambidex.py" line="133" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7721b12a-6553-4db3-91ac-83537f95ee5e" name="Default" comment="" />
@@ -17,13 +17,29 @@
       <file leaf-file-name="ambidex.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ambidex.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="847">
-              <caret line="267" column="30" selection-start-line="267" selection-start-column="30" selection-end-line="267" selection-end-column="30" />
+            <state relative-caret-position="503">
+              <caret line="197" column="51" selection-start-line="197" selection-start-column="51" selection-end-line="197" selection-end-column="51" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#11478#12478#0" />
-                <element signature="e#12505#12961#0" />
-                <element signature="e#12984#13220#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ambidex_old_text.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ambidex_old_text.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" selection-start-line="18" selection-end-line="26" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#3487#4487#0" />
+                <element signature="e#4514#4970#0" />
+                <element signature="e#4993#5229#0" />
+                <element signature="e#5250#5854#0" />
+                <element signature="e#5875#13831#0" />
+                <element signature="e#13857#14642#0" />
+                <element signature="e#14666#14842#0" />
               </folding>
             </state>
           </provider>
@@ -105,6 +121,7 @@
         <option value="$PROJECT_DIR$/../Unit3 SoftwareDevlopment/idea/Chap 6 Part B Codes/basicSprite_withMultipleBoxesMe2.py" />
         <option value="$PROJECT_DIR$/ligma.py" />
         <option value="$PROJECT_DIR$/pygame_testing.py" />
+        <option value="$PROJECT_DIR$/ambidex_old_text.py" />
         <option value="$PROJECT_DIR$/ambidex.py" />
       </list>
     </option>
@@ -120,7 +137,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Course" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -132,6 +148,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Course" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -223,11 +240,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.062170707" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="8" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3263158" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3263158" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -245,17 +263,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <option name="time" value="14" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../Unit3 SoftwareDevlopment/idea/Chap 6 Part B Codes/basicSprite_withMultipleBoxesMe2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="38" selection-start-line="38" selection-end-line="55" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Unit3 SoftwareDevlopment/idea/imagetesting.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
@@ -276,9 +287,6 @@
           <caret line="143" column="20" selection-start-line="143" selection-start-column="20" selection-end-line="143" selection-end-column="41" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#11478#12478#0" />
-            <element signature="e#12505#12961#0" />
-            <element signature="e#12984#13220#0" />
           </folding>
         </state>
       </provider>
@@ -327,9 +335,6 @@
           <caret line="90" column="27" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#11478#12478#0" />
-            <element signature="e#12505#12961#0" />
-            <element signature="e#12984#13220#0" />
           </folding>
         </state>
       </provider>
@@ -378,9 +383,6 @@
           <caret line="88" column="51" selection-start-line="88" selection-start-column="51" selection-end-line="88" selection-end-column="51" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#11478#12478#0" />
-            <element signature="e#12505#12961#0" />
-            <element signature="e#12984#13220#0" />
           </folding>
         </state>
       </provider>
@@ -429,9 +431,6 @@
           <caret line="314" column="11" selection-start-line="314" selection-start-column="11" selection-end-line="314" selection-end-column="11" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#11478#12478#0" />
-            <element signature="e#12505#12961#0" />
-            <element signature="e#12984#13220#0" />
           </folding>
         </state>
       </provider>
@@ -473,9 +472,6 @@
           <caret line="303" column="29" selection-start-line="303" selection-start-column="29" selection-end-line="303" selection-end-column="29" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#11478#12478#0" />
-            <element signature="e#12505#12961#0" />
-            <element signature="e#12984#13220#0" />
           </folding>
         </state>
       </provider>
@@ -517,9 +513,6 @@
           <caret line="273" column="25" selection-start-line="273" selection-start-column="25" selection-end-line="273" selection-end-column="25" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#11478#12478#0" />
-            <element signature="e#12505#12961#0" />
-            <element signature="e#12984#13220#0" />
           </folding>
         </state>
       </provider>
@@ -554,9 +547,6 @@
           <caret line="204" column="29" selection-start-line="204" selection-start-column="29" selection-end-line="204" selection-end-column="29" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#11478#12478#0" />
-            <element signature="e#12505#12961#0" />
-            <element signature="e#12984#13220#0" />
           </folding>
         </state>
       </provider>
@@ -591,9 +581,6 @@
           <caret line="204" column="29" selection-start-line="204" selection-start-column="29" selection-end-line="204" selection-end-column="29" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#11478#12478#0" />
-            <element signature="e#12505#12961#0" />
-            <element signature="e#12984#13220#0" />
           </folding>
         </state>
       </provider>
@@ -669,15 +656,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ambidex.py">
+    <entry file="file://$PROJECT_DIR$/ambidex_old_text.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="847">
-          <caret line="267" column="30" selection-start-line="267" selection-start-column="30" selection-end-line="267" selection-end-column="30" />
+        <state relative-caret-position="306">
+          <caret line="18" selection-start-line="18" selection-end-line="26" selection-end-column="22" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#11478#12478#0" />
-            <element signature="e#12505#12961#0" />
-            <element signature="e#12984#13220#0" />
+            <element signature="e#3487#4487#0" />
+            <element signature="e#4514#4970#0" />
+            <element signature="e#4993#5229#0" />
+            <element signature="e#5250#5854#0" />
+            <element signature="e#5875#13831#0" />
+            <element signature="e#13857#14642#0" />
+            <element signature="e#14666#14842#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ambidex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="197" column="51" selection-start-line="197" selection-start-column="51" selection-end-line="197" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
