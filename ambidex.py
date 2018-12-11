@@ -217,6 +217,7 @@ def setup2():
                     p7 = ABPlayer("Seven")
                     p8 = ABPlayer("Lotus")
                     p9 = ABPlayer("9th Man")
+                    playertable = [p1, p2, p3, p4, p5, p6, p7, p8, p9]
                     partOverview()
                 if buttonB.click():
                     p1 = ABPlayer("Sigma")
@@ -228,6 +229,7 @@ def setup2():
                     p7 = ABPlayer("Tenmyouji")
                     p8 = ABPlayer("Quark")
                     p9 = ABPlayer("Dio")
+                    playertable = [p1, p2, p3, p4, p5, p6, p7, p8, p9]
                     partOverview()
                 if buttonC.click():
                     p1 = ABPlayer("Carlos")
@@ -239,6 +241,7 @@ def setup2():
                     p7 = ABPlayer("Q")
                     p8 = ABPlayer("Mira")
                     p9 = ABPlayer("Eric")
+                    playertable = [p1, p2, p3, p4, p5, p6, p7, p8, p9]
                     partOverview()
         screen.blit(bg, (0, 0))
         bg.blit(textBox,(100,550))
@@ -270,36 +273,47 @@ def partOverview():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 keepGoing = False
-    textlabel = Label()
-    textlabel.text = "Your participants are:"
-    textlabel.center = (320,270)
-    part1 = Label()
-    part1.text = playertable[0].name
-    part1.center = (960,60)
-    part2 = Label()
-    part2.text = playertable[1].name
-    part2.center = (960,140)
-    part3 = Label()
-    part3.text = playertable[2].name
-    part3.center = (960,220)
-    part4 = Label()
-    part4.text = playertable[3].name
-    part4.center = (960,300)
-    part5 = Label()
-    part5.text = playertable[4].name
-    part5.center = (960,380)
-    part6 = Label()
-    part6.text = playertable[5].name
-    part6.center = (960,460)
-    part7 = Label()
-    part7.text = playertable[6].name
-    part7.center = (960,540)
-    part8 = Label()
-    part8.text = playertable[7].name
-    part8.center = (960,620)
-    part9 = Label()
-    part9.text = playertable[8].name
-    part9.center = (960,700)
+        textlabel = Label()
+        textlabel.text = "Your participants are:"
+        textlabel.center = (320,270)
+        part1 = Label()
+        part1.text = playertable[0].name
+        part1.center = (960,60)
+        part2 = Label()
+        part2.text = playertable[1].name
+        part2.center = (960,110)
+        part3 = Label()
+        part3.text = playertable[2].name
+        part3.center = (960,160)
+        part4 = Label()
+        part4.text = playertable[3].name
+        part4.center = (960,210)
+        part5 = Label()
+        part5.text = playertable[4].name
+        part5.center = (960,260)
+        part6 = Label()
+        part6.text = playertable[5].name
+        part6.center = (960,310)
+        part7 = Label()
+        part7.text = playertable[6].name
+        part7.center = (960,360)
+        part8 = Label()
+        part8.text = playertable[7].name
+        part8.center = (960,410)
+        part9 = Label()
+        part9.text = playertable[8].name
+        part9.center = (960,460)
+        continueBtn = Button("Continue", 1080,640)
+        buttonGroup = pg.sprite.Group(continueBtn)
+        labelGroup = pg.sprite.Group(textlabel,part1,part2,part3,part4,part5, part6, part7, part7, part8, part9)
+        screen.blit(bg, (0, 0))
+        buttonGroup.clear(screen, bg)
+        buttonGroup.update()
+        buttonGroup.draw(screen)
+        labelGroup.update()
+        labelGroup.draw(screen)
+        pg.mouse.set_visible(True)
+        pg.display.flip()
 
 
 def layoutChooser():
