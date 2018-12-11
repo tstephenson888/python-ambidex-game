@@ -29,6 +29,13 @@ deathmessage = [" is no longer with us.",
                 " stopped breathing.", " perished.", " isn't coming back from that.",
                 " is in a better place now.",
                 " forgot to write their will.", " welcomed Death with open arms.", " expired."]
+
+def wait():
+
+    input("Press any key to continue.")
+
+def linebreak():
+    print("--------------------------")
 def intro():
     #Init players because Python likes to complain
         global p1
@@ -153,15 +160,7 @@ def layoutselect():
     print("Layout C: The same-colored Pairs and Solos vote against each other.")
     layout = input("Or you can have the game randomly decide. What will you do? (enter [A], [B], [C], [R]ANDOM) ")
 
-def ABbuttons():
-    pg.display.set_caption("Python Ambidex Game")
-    global screen
 
-    bg = pg.Surface(screen.get_size())
-    bg = bg.convert()
-    bg.fill((0,118,163))
-    ally = Button('A: ALLY', (640, 300))
-    betray = Button("B: BETRAY", (640, 500))
 def abroller():
     #RNG time
     for index in range(0,8):

@@ -185,18 +185,20 @@ def setup2():
     bg.fill((0,118,163))
     textBox = pg.image.load(("img/UI/textBox.png"))
     textBox = textBox.convert_alpha()
+    nvlText = Label()
+    nvlText.text = "Select your participants."
+    nvlText.center = (640,600)
+    buttonA = Button("Cast A [999]", 180,180)
+    buttonB = Button("Cast B [Virtue's Last Reward]", 720,180)
+    buttonC = Button("Cast C [Zero Time Dilemma]", 640,400)
+    buttonGroup = pg.sprite.Group(buttonA,buttonB,buttonC)
+    labelGroup = pg.sprite.Group(nvlText)
     # nameBox = pg.image.load(("img/UI/nameBox.png"))
     # nameBox = nameBox.convert_alpha()
     # nvlName = Label()
     # nvlName.text = "Name"
     # nvlName.center = (285,530)
-    nvlText = Label()
-    nvlText.text = "Select your participants."
-    nvlText.center = (640,600)
-    buttonA = Button("Cast A [999]", 960,180)
-    buttonB = Button("Cast B [Virtue's Last Reward]", 960,360)
-    buttonC = Button("Cast C [Zero Time Dilemma]", 960,540)
-    buttonGroup = pg.sprite.Group(buttonA,buttonB,buttonC)
+
     clock = pg.time.Clock()
     keepGoing = True
     while keepGoing:
@@ -215,6 +217,7 @@ def setup2():
                     p7 = ABPlayer("Seven")
                     p8 = ABPlayer("Lotus")
                     p9 = ABPlayer("9th Man")
+                    partOverview()
                 if buttonB.click():
                     p1 = ABPlayer("Sigma")
                     p2 = ABPlayer("Phi")
@@ -225,6 +228,7 @@ def setup2():
                     p7 = ABPlayer("Tenmyouji")
                     p8 = ABPlayer("Quark")
                     p9 = ABPlayer("Dio")
+                    partOverview()
                 if buttonC.click():
                     p1 = ABPlayer("Carlos")
                     p2 = ABPlayer("Akane")
@@ -235,13 +239,14 @@ def setup2():
                     p7 = ABPlayer("Q")
                     p8 = ABPlayer("Mira")
                     p9 = ABPlayer("Eric")
+                    partOverview()
         screen.blit(bg, (0, 0))
         bg.blit(textBox,(100,550))
         buttonGroup.clear(screen, bg)
         buttonGroup.update()
         buttonGroup.draw(screen)
-
-        bg.blit(nvlText,nvlText.get_rect())
+        labelGroup.update()
+        labelGroup.draw(screen)
         pg.mouse.set_visible(True)
         pg.display.flip()
 def partOverview():
@@ -259,38 +264,40 @@ def partOverview():
     bg = pg.Surface(screen.get_size())
     bg = bg.convert()
     bg.fill((0,118,163))
+    clock = pg.time.Clock()
+    keepGoing = True
     while keepGoing:
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 keepGoing = False
-    textlabel = Label
+    textlabel = Label()
     textlabel.text = "Your participants are:"
     textlabel.center = (320,270)
-    part1 = Label
+    part1 = Label()
     part1.text = playertable[0].name
     part1.center = (960,60)
-    part2 = Label
+    part2 = Label()
     part2.text = playertable[1].name
     part2.center = (960,140)
-    part3 = Label
+    part3 = Label()
     part3.text = playertable[2].name
     part3.center = (960,220)
-    part4 = Label
+    part4 = Label()
     part4.text = playertable[3].name
     part4.center = (960,300)
-    part5 = Label
+    part5 = Label()
     part5.text = playertable[4].name
     part5.center = (960,380)
-    part6 = Label
+    part6 = Label()
     part6.text = playertable[5].name
     part6.center = (960,460)
-    part7 = Label
+    part7 = Label()
     part7.text = playertable[6].name
     part7.center = (960,540)
-    part8 = Label
+    part8 = Label()
     part8.text = playertable[7].name
     part8.center = (960,620)
-    part9 = Label
+    part9 = Label()
     part9.text = playertable[8].name
     part9.center = (960,700)
 
@@ -303,6 +310,35 @@ def layoutChooser():
     textlabel = Label
     textlabel.text = "Your participants are:"
     textlabel.center = (320,270)
+    while keepGoing:
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                keepGoing = False
+
+def teamShuffle():
+    pass
+
+
+def ABbuttons():
+    pg.display.set_caption("Python Ambidex Game")
+    global screen
+
+    bg = pg.Surface(screen.get_size())
+    bg = bg.convert()
+    bg.fill((0,118,163))
+    ally = Button('A: ALLY', 640, 300)
+    betray = Button("B: BETRAY", 640, 500)
+
+    introButtons = pg.sprite.Group(ally,betray)
+    while keepGoing:
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                keepGoing = False
+            if event.type == pg.MOUSEBUTTONDOWN:
+                        if ally.click():
+                            p1.vote = "A"
+                        if betray.click():
+                            p1.vote = 'B'
 
 def imgChart():
     global p1
@@ -351,3 +387,6 @@ def imgChart():
 
 setup()
 setup2()
+partOverview()
+layoutChooser()
+imgChart()
