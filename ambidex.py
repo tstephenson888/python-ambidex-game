@@ -267,45 +267,46 @@ def partOverview():
     bg = pg.Surface(screen.get_size())
     bg = bg.convert()
     bg.fill((0,118,163))
+    textlabel = Label()
+    textlabel.text = "Your participants are:"
+    textlabel.center = (320,270)
+    part1 = Label()
+    part1.text = playertable[0].name
+    part1.center = (960,60)
+    part2 = Label()
+    part2.text = playertable[1].name
+    part2.center = (960,110)
+    part3 = Label()
+    part3.text = playertable[2].name
+    part3.center = (960,160)
+    part4 = Label()
+    part4.text = playertable[3].name
+    part4.center = (960,210)
+    part5 = Label()
+    part5.text = playertable[4].name
+    part5.center = (960,260)
+    part6 = Label()
+    part6.text = playertable[5].name
+    part6.center = (960,310)
+    part7 = Label()
+    part7.text = playertable[6].name
+    part7.center = (960,360)
+    part8 = Label()
+    part8.text = playertable[7].name
+    part8.center = (960,410)
+    part9 = Label()
+    part9.text = playertable[8].name
+    part9.center = (960,460)
+    continueBtn = Button("Continue", 1080,640)
+    buttonGroup = pg.sprite.Group(continueBtn)
+    labelGroup = pg.sprite.Group(textlabel,part1,part2,part3,part4,part5, part6, part7, part7, part8, part9)
     clock = pg.time.Clock()
     keepGoing = True
     while keepGoing:
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 keepGoing = False
-        textlabel = Label()
-        textlabel.text = "Your participants are:"
-        textlabel.center = (320,270)
-        part1 = Label()
-        part1.text = playertable[0].name
-        part1.center = (960,60)
-        part2 = Label()
-        part2.text = playertable[1].name
-        part2.center = (960,110)
-        part3 = Label()
-        part3.text = playertable[2].name
-        part3.center = (960,160)
-        part4 = Label()
-        part4.text = playertable[3].name
-        part4.center = (960,210)
-        part5 = Label()
-        part5.text = playertable[4].name
-        part5.center = (960,260)
-        part6 = Label()
-        part6.text = playertable[5].name
-        part6.center = (960,310)
-        part7 = Label()
-        part7.text = playertable[6].name
-        part7.center = (960,360)
-        part8 = Label()
-        part8.text = playertable[7].name
-        part8.center = (960,410)
-        part9 = Label()
-        part9.text = playertable[8].name
-        part9.center = (960,460)
-        continueBtn = Button("Continue", 1080,640)
-        buttonGroup = pg.sprite.Group(continueBtn)
-        labelGroup = pg.sprite.Group(textlabel,part1,part2,part3,part4,part5, part6, part7, part7, part8, part9)
+            if continueBtn.click()
         screen.blit(bg, (0, 0))
         buttonGroup.clear(screen, bg)
         buttonGroup.update()
@@ -314,6 +315,7 @@ def partOverview():
         labelGroup.draw(screen)
         pg.mouse.set_visible(True)
         pg.display.flip()
+
 
 
 def layoutChooser():
