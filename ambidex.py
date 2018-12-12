@@ -120,6 +120,9 @@ p7 = ABPlayer("DEBUG")
 p8 = ABPlayer("DEBUG")
 p9 = ABPlayer("DEBUG")
 playable = False
+playertable = [p1, p2, p3, p4, p5, p6, p7, p8, p9]
+layout = "R"
+roundnum = 1
 screen = pg.display.set_mode((1280, 720))
 
 def setup():
@@ -306,7 +309,8 @@ def partOverview():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 keepGoing = False
-            if continueBtn.click()
+            if continueBtn.click():
+                teamShuffle()
         screen.blit(bg, (0, 0))
         buttonGroup.clear(screen, bg)
         buttonGroup.update()
@@ -319,20 +323,68 @@ def partOverview():
 
 
 def layoutChooser():
-    while keepGoing:
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                keepGoing = False
-    textlabel = Label
-    textlabel.text = "Your participants are:"
-    textlabel.center = (320,270)
+    global screen
+    global p1
+    global p2
+    global p3
+    global p4
+    global p5
+    global p6
+    global p7
+    global p8
+    global p9
+    global playertable
+    global layout
+    bg = pg.Surface(screen.get_size())
+    bg = bg.convert()
+    bg.fill((0,118,163))
+    keepGoing = True
     while keepGoing:
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 keepGoing = False
 
+    textBox = pg.image.load(("img/UI/textBox.png"))
+    textBox = textBox.convert_alpha()
+    nvlText = Label()
+    nvlText.text = "Select your team layout."
+    nvlText.center = (640,600)
+    buttonA = pg.image.load(("img/layout/layoutA.png"))
+    buttonA = buttonA.convert_alpha()
+    buttonB = pg.image.load(("img/layout/layoutB.png"))
+    buttonB = buttonA.convert_alpha()
+    buttonC = pg.image.load(("img/layout/layoutC.png"))
+    buttonC = buttonA.convert_alpha()
+    buttonGroup = pg.sprite.Group(buttonA,buttonB,buttonC)
+    labelGroup = pg.sprite.Group(nvlText)
+    while keepGoing:
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                keepGoing = False
+            if buttonA.click:
+                layout = "A"
+            if buttonB.click:
+                layout = "B"
+            if buttonC.click:
+                layout = "C"
+        screen.blit(bg, (0, 0))
+        bg.blit(textBox,(100,550))
+        labelGroup.update()
+        labelGroup.draw(screen)
+        pg.mouse.set_visible(True)
+        bg.blit(buttonGroup, (0,0))
+        pg.display.flip()
+
 def teamShuffle():
-    pass
+    textBox = pg.image.load(("img/UI/textBox.png"))
+    textBox = textBox.convert_alpha()
+    nvlText = Label()
+    nvlText.text = "Select your participants."
+    nvlText.center = (640,600)
+    while keepGoing:
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                keepGoing = False
 
 
 def ABbuttons():
@@ -400,9 +452,15 @@ def imgChart():
         pg.display.flip()
 
 
+def main():
+    setup()
+    setup2()
+    partOverview()
+    teamShuffle()
+    layoutChooser()
+    ABbuttons()
+    imgChart()
 
-setup()
-setup2()
-partOverview()
 layoutChooser()
+ABbuttons()
 imgChart()

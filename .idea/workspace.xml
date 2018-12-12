@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/ambidex.py" line="133" mnemonic="9" />
+    <bookmark url="file://$PROJECT_DIR$/ambidex.py" line="136" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7721b12a-6553-4db3-91ac-83537f95ee5e" name="Default" comment="" />
@@ -17,10 +17,12 @@
       <file leaf-file-name="ambidex.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ambidex.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="308" column="34" selection-start-line="308" selection-start-column="34" selection-end-line="308" selection-end-column="34" />
+            <state relative-caret-position="316">
+              <caret line="370" column="34" selection-start-line="370" selection-start-column="34" selection-end-line="370" selection-end-column="34" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#5621#8678#0" />
+                <element signature="e#8703#10497#0" />
               </folding>
             </state>
           </provider>
@@ -29,8 +31,8 @@
       <file leaf-file-name="ambidex_old_text.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ambidex_old_text.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="111" column="8" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="58" />
+            <state relative-caret-position="459">
+              <caret line="122" selection-start-line="122" selection-end-line="124" selection-end-column="12" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -41,7 +43,7 @@
       <file leaf-file-name="pygame_testing.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pygame_testing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
+            <state relative-caret-position="748">
               <caret line="46" selection-start-line="46" selection-end-line="46" selection-end-column="12" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -270,6 +272,8 @@
           <caret line="143" column="20" selection-start-line="143" selection-start-column="20" selection-end-line="143" selection-end-column="41" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#5621#8678#0" />
+            <element signature="e#8703#10497#0" />
           </folding>
         </state>
       </provider>
@@ -318,6 +322,8 @@
           <caret line="90" column="27" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#5621#8678#0" />
+            <element signature="e#8703#10497#0" />
           </folding>
         </state>
       </provider>
@@ -366,6 +372,8 @@
           <caret line="88" column="51" selection-start-line="88" selection-start-column="51" selection-end-line="88" selection-end-column="51" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#5621#8678#0" />
+            <element signature="e#8703#10497#0" />
           </folding>
         </state>
       </provider>
@@ -414,6 +422,8 @@
           <caret line="314" column="11" selection-start-line="314" selection-start-column="11" selection-end-line="314" selection-end-column="11" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#5621#8678#0" />
+            <element signature="e#8703#10497#0" />
           </folding>
         </state>
       </provider>
@@ -455,6 +465,8 @@
           <caret line="303" column="29" selection-start-line="303" selection-start-column="29" selection-end-line="303" selection-end-column="29" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#5621#8678#0" />
+            <element signature="e#8703#10497#0" />
           </folding>
         </state>
       </provider>
@@ -496,6 +508,8 @@
           <caret line="273" column="25" selection-start-line="273" selection-start-column="25" selection-end-line="273" selection-end-column="25" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#5621#8678#0" />
+            <element signature="e#8703#10497#0" />
           </folding>
         </state>
       </provider>
@@ -530,6 +544,8 @@
           <caret line="204" column="29" selection-start-line="204" selection-start-column="29" selection-end-line="204" selection-end-column="29" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#5621#8678#0" />
+            <element signature="e#8703#10497#0" />
           </folding>
         </state>
       </provider>
@@ -564,6 +580,8 @@
           <caret line="204" column="29" selection-start-line="204" selection-start-column="29" selection-end-line="204" selection-end-column="29" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#5621#8678#0" />
+            <element signature="e#8703#10497#0" />
           </folding>
         </state>
       </provider>
@@ -631,7 +649,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pygame_testing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
+        <state relative-caret-position="748">
           <caret line="46" selection-start-line="46" selection-end-line="46" selection-end-column="12" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
@@ -641,8 +659,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ambidex_old_text.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="111" column="8" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="58" />
+        <state relative-caret-position="459">
+          <caret line="122" selection-start-line="122" selection-end-line="124" selection-end-column="12" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -651,10 +669,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ambidex.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="308" column="34" selection-start-line="308" selection-start-column="34" selection-end-line="308" selection-end-column="34" />
+        <state relative-caret-position="316">
+          <caret line="370" column="34" selection-start-line="370" selection-start-column="34" selection-end-line="370" selection-end-column="34" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#5621#8678#0" />
+            <element signature="e#8703#10497#0" />
           </folding>
         </state>
       </provider>
