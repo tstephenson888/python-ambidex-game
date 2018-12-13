@@ -74,6 +74,7 @@ class Button(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self)
         self.image = pg.Surface((50,50))
         self.image.fill((color))
+        self.rect = self.image.get_rect()
         self.font = pg.font.SysFont("None", 48)
         self.text = text
         self.center = (posx,posy)
@@ -196,11 +197,6 @@ def setup2():
     buttonC = Button("Cast C [Zero Time Dilemma]", 640,400)
     buttonGroup = pg.sprite.Group(buttonA,buttonB,buttonC)
     labelGroup = pg.sprite.Group(nvlText)
-    # nameBox = pg.image.load(("img/UI/nameBox.png"))
-    # nameBox = nameBox.convert_alpha()
-    # nvlName = Label()
-    # nvlName.text = "Name"
-    # nvlName.center = (285,530)
 
     clock = pg.time.Clock()
     keepGoing = True
@@ -320,7 +316,85 @@ def partOverview():
         pg.mouse.set_visible(True)
         pg.display.flip()
 
+def teamShuffle():
+    global screen
+    global p1
+    global p2
+    global p3
+    global p4
+    global p5
+    global p6
+    global p7
+    global p8
+    global p9
+    global playertable
+    global layout
+    bg = pg.Surface(screen.get_size())
+    bg = bg.convert()
+    bg.fill((0,118,163))
 
+
+    random.shuffle(playertable)
+    playertable[0].role = "Red Pair"
+    playertable[1].role = "Red Pair"
+
+    playertable[2].role = "Blue Pair"
+    playertable[3].role = "Blue Pair"
+
+    playertable[4].role = "Green Pair"
+    playertable[5].role = "Green Pair"
+
+    playertable[6].role = "Red Solo"
+    playertable[7].role = "Blue Solo"
+    playertable[8].role = "Green Solo"
+    textBox = pg.image.load("img/layout/scrambled.png")
+    textBox = textBox.convert_alpha()
+    nvlText = Label()
+    nvlText.text = "The teams have been scrambled!"
+    nvlText.center = (640,600)
+
+    PredText = Label()
+    PredText.text = playertable[0].name + " and " + playertable[1].name
+    PredText.center = (350,170)
+
+    PbluText = Label()
+    PbluText.text = playertable[2].name + " and " + playertable[3].name
+    PbluText.center = (350,300)
+
+    PgrnText = Label()
+    PgrnText.text = playertable[4].name + " and " + playertable[5].name
+    PgrnText.center = (350,430)
+
+    SredText = Label()
+    SredText.text = playertable[6].name
+    SredText.center = (780,170)
+
+    SbluText = Label()
+    SbluText.text = playertable[7].name
+    SbluText.center = (780,300)
+
+    SgrnText = Label()
+    SgrnText.text = playertable[8].name
+    SgrnText.center = (780,430)
+    labelGroup = pg.sprite.Group(PredText,PbluText,PgrnText,SredText,SbluText,SgrnText,nvlText)
+
+    continueBtn = Button("Continue", 1080,640)
+    buttonGroup = pg.sprite.Group(continueBtn)
+    keepGoing = True
+    while keepGoing:
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                keepGoing = False
+            if continueBtn.click():
+                layoutChooser()
+        screen.blit(bg, (0, 0))
+        buttonGroup.clear(screen, bg)
+        buttonGroup.update()
+        buttonGroup.draw(screen)
+        labelGroup.update()
+        labelGroup.draw(screen)
+        pg.mouse.set_visible(True)
+        pg.display.flip()
 
 def layoutChooser():
     global screen
@@ -375,18 +449,6 @@ def layoutChooser():
         bg.blit(buttonGroup, (0,0))
         pg.display.flip()
 
-def teamShuffle():
-    textBox = pg.image.load(("img/UI/textBox.png"))
-    textBox = textBox.convert_alpha()
-    nvlText = Label()
-    nvlText.text = "Select your participants."
-    nvlText.center = (640,600)
-    while keepGoing:
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                keepGoing = False
-
-
 def ABbuttons():
     pg.display.set_caption("Python Ambidex Game")
     global screen
@@ -398,6 +460,7 @@ def ABbuttons():
     betray = Button("B: BETRAY", 640, 500)
 
     introButtons = pg.sprite.Group(ally,betray)
+    keepGoing = True
     while keepGoing:
         for event in pg.event.get():
             if event.type == pg.QUIT:
@@ -407,6 +470,12 @@ def ABbuttons():
                             p1.vote = "A"
                         if betray.click():
                             p1.vote = 'B'
+        screen.blit(bg, (0, 0))
+        bg.blit(introButtons,(100,550))
+        introButtons.update()
+        introButtons.draw(screen)
+        pg.mouse.set_visible(True)
+        pg.display.flip()
 
 def imgChart():
     global p1
@@ -461,6 +530,4 @@ def main():
     ABbuttons()
     imgChart()
 
-layoutChooser()
-ABbuttons()
-imgChart()
+main()
