@@ -59,7 +59,7 @@ class Label(pg.sprite.Sprite):
     """
     def __init__(self):
         pg.sprite.Sprite.__init__(self)
-        self.font = pg.font.SysFont("None", 40 )
+        self.font = pg.font.SysFont("None", 32)
         self.text = ""
         self.center = (320,240)
 
@@ -75,7 +75,7 @@ class Button(pg.sprite.Sprite):
         self.image = pg.Surface((50,50))
         self.image.fill((color))
         self.rect = self.image.get_rect()
-        self.font = pg.font.SysFont("None", 48)
+        self.font = pg.font.SysFont("None", 32)
         self.text = text
         self.center = (posx,posy)
         self.background = (0,118,163)
@@ -305,8 +305,9 @@ def partOverview():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 keepGoing = False
-            if continueBtn.click():
-                teamShuffle()
+            elif event.type == pg.MOUSEBUTTONDOWN:
+                if continueBtn.click():
+                    teamShuffle()
         screen.blit(bg, (0, 0))
         buttonGroup.clear(screen, bg)
         buttonGroup.update()
@@ -329,9 +330,8 @@ def teamShuffle():
     global p9
     global playertable
     global layout
-    bg = pg.Surface(screen.get_size())
-    bg = bg.convert()
-    bg.fill((0,118,163))
+    bg = pg.image.load("img/layout/scrambled.png")
+    bg = bg.convert_alpha()
 
 
     random.shuffle(playertable)
@@ -347,35 +347,36 @@ def teamShuffle():
     playertable[6].role = "Red Solo"
     playertable[7].role = "Blue Solo"
     playertable[8].role = "Green Solo"
-    textBox = pg.image.load("img/layout/scrambled.png")
+
+    textBox = pg.image.load(("img/UI/textBox.png"))
     textBox = textBox.convert_alpha()
     nvlText = Label()
     nvlText.text = "The teams have been scrambled!"
     nvlText.center = (640,600)
 
     PredText = Label()
-    PredText.text = playertable[0].name + " and " + playertable[1].name
-    PredText.center = (350,170)
+    PredText.text = playertable[0].name + " & " + playertable[1].name
+    PredText.center = (550,220)
 
     PbluText = Label()
-    PbluText.text = playertable[2].name + " and " + playertable[3].name
-    PbluText.center = (350,300)
+    PbluText.text = playertable[2].name + " & " + playertable[3].name
+    PbluText.center = (550,340)
 
     PgrnText = Label()
-    PgrnText.text = playertable[4].name + " and " + playertable[5].name
-    PgrnText.center = (350,430)
+    PgrnText.text = playertable[4].name + " & " + playertable[5].name
+    PgrnText.center = (550,460)
 
     SredText = Label()
     SredText.text = playertable[6].name
-    SredText.center = (780,170)
+    SredText.center = (890,220)
 
     SbluText = Label()
     SbluText.text = playertable[7].name
-    SbluText.center = (780,300)
+    SbluText.center = (890,340)
 
     SgrnText = Label()
     SgrnText.text = playertable[8].name
-    SgrnText.center = (780,430)
+    SgrnText.center = (890,460)
     labelGroup = pg.sprite.Group(PredText,PbluText,PgrnText,SredText,SbluText,SgrnText,nvlText)
 
     continueBtn = Button("Continue", 1080,640)
@@ -385,8 +386,9 @@ def teamShuffle():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 keepGoing = False
-            if continueBtn.click():
-                layoutChooser()
+            elif event.type == pg.MOUSEBUTTONDOWN:
+                if continueBtn.click():
+                    layoutChooser()
         screen.blit(bg, (0, 0))
         buttonGroup.clear(screen, bg)
         buttonGroup.update()
@@ -412,41 +414,53 @@ def layoutChooser():
     bg = pg.Surface(screen.get_size())
     bg = bg.convert()
     bg.fill((0,118,163))
-    keepGoing = True
-    while keepGoing:
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                keepGoing = False
-
     textBox = pg.image.load(("img/UI/textBox.png"))
     textBox = textBox.convert_alpha()
     nvlText = Label()
     nvlText.text = "Select your team layout."
     nvlText.center = (640,600)
-    buttonA = pg.image.load(("img/layout/layoutA.png"))
-    buttonA = buttonA.convert_alpha()
-    buttonB = pg.image.load(("img/layout/layoutB.png"))
-    buttonB = buttonA.convert_alpha()
-    buttonC = pg.image.load(("img/layout/layoutC.png"))
-    buttonC = buttonA.convert_alpha()
+
+    #buttonA = pg.image.load(("img/layout/layoutA.png"))
+    #buttonA = buttonA.convert_alpha()
+    #buttonB = pg.image.load(("img/layout/layoutB.png"))
+    #buttonB = buttonB.convert_alpha()
+    #buttonC = pg.image.load(("img/layout/layoutC.png"))
+    #buttonC = buttonC.convert_alpha()
+
+    buttonA = Button()
+    buttonA.text = "Layout A: Red Pair vs. Blue Solo, Blue Pair vs. Green Solo, Green Pair vs. Red Solo"
+    buttonA.center = 640,160
+    buttonB = Button()
+    buttonB.text = "Layout B: Red Pair vs. Green Solo, Blue Pair vs. Red Solo, Green Pair vs. Blue Solo"
+    buttonB.center = 640,320
+    buttonC = Button()
+    buttonC.text = "Layout C: The same-colored Pairs and Solos vote against each other. (RvR, BvB, GvG)"
+    buttonC.center = 640,480
     buttonGroup = pg.sprite.Group(buttonA,buttonB,buttonC)
     labelGroup = pg.sprite.Group(nvlText)
+    keepGoing = True
     while keepGoing:
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 keepGoing = False
-            if buttonA.click:
-                layout = "A"
-            if buttonB.click:
-                layout = "B"
-            if buttonC.click:
-                layout = "C"
+            elif event.type == pg.MOUSEBUTTONDOWN:
+                if buttonA.click:
+                    layout = "A"
+                    imgChart()
+                if buttonB.click:
+                    layout = "B"
+                    imgChart()
+                if buttonC.click:
+                    layout = "C"
+                    imgChart()
         screen.blit(bg, (0, 0))
         bg.blit(textBox,(100,550))
+        buttonGroup.clear(screen, bg)
+        buttonGroup.update()
+        buttonGroup.draw(screen)
         labelGroup.update()
         labelGroup.draw(screen)
         pg.mouse.set_visible(True)
-        bg.blit(buttonGroup, (0,0))
         pg.display.flip()
 
 def ABbuttons():
@@ -527,7 +541,6 @@ def main():
     partOverview()
     teamShuffle()
     layoutChooser()
-    ABbuttons()
     imgChart()
 
 main()
