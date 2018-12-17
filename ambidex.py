@@ -143,7 +143,7 @@ def abroller():
         playertable[2].vote = playertable[3].vote
     if not playertable[4].alive:
         playertable[4].vote = playertable[5].vote
-        
+
 def setup():
 
     pg.display.set_caption("Python Ambidex Game")
@@ -173,6 +173,7 @@ def setup():
                 if start.click():
                     print('start clicked')
                     introButtons.remove()
+                    keepGoing = False
                     setup2()
                 if readme.click():
                     os.open("README.txt",os.O_RDONLY)
@@ -235,6 +236,7 @@ def setup2():
                     p8 = ABPlayer("Lotus")
                     p9 = ABPlayer("9th Man")
                     playertable = [p1, p2, p3, p4, p5, p6, p7, p8, p9]
+                    keepGoing = False
                     partOverview()
                 if buttonB.click():
                     p1 = ABPlayer("Sigma")
@@ -247,6 +249,7 @@ def setup2():
                     p8 = ABPlayer("Quark")
                     p9 = ABPlayer("Dio")
                     playertable = [p1, p2, p3, p4, p5, p6, p7, p8, p9]
+                    keepGoing = False
                     partOverview()
                 if buttonC.click():
                     p1 = ABPlayer("Carlos")
@@ -259,6 +262,7 @@ def setup2():
                     p8 = ABPlayer("Mira")
                     p9 = ABPlayer("Eric")
                     playertable = [p1, p2, p3, p4, p5, p6, p7, p8, p9]
+                    keepGoing = False
                     partOverview()
         screen.blit(bg, (0, 0))
         bg.blit(textBox,(100,550))
@@ -325,7 +329,9 @@ def partOverview():
                 keepGoing = False
             elif event.type == pg.MOUSEBUTTONDOWN:
                 if continueBtn.click():
+                    keepGoing = False
                     teamShuffle()
+
         screen.blit(bg, (0, 0))
         buttonGroup.clear(screen, bg)
         buttonGroup.update()
@@ -407,6 +413,7 @@ def teamShuffle():
             elif event.type == pg.MOUSEBUTTONDOWN:
                 if continueBtn.click():
                     layoutChooser()
+                    keepGoing = False
         screen.blit(bg, (0, 0))
         buttonGroup.clear(screen, bg)
         buttonGroup.update()
@@ -466,12 +473,15 @@ def layoutChooser():
                 if buttonA.click:
                     layout = "A"
                     imgChart()
+                    keepGoing = False
                 if buttonB.click:
                     layout = "B"
                     imgChart()
+                    keepGoing = False
                 if buttonC.click:
                     layout = "C"
                     imgChart()
+                    keepGoing = False
         screen.blit(bg, (0, 0))
         bg.blit(textBox,(100,550))
         buttonGroup.clear(screen, bg)
@@ -483,6 +493,7 @@ def layoutChooser():
         pg.display.flip()
 
 def pointAssignment():
+
     global playertable
     global layout
     if layout.upper() == "A":
@@ -588,33 +599,66 @@ def imgChart():
     bg = pg.image.load(("img/chartstuff/blankchart" + layout.upper() + ".png"))
     roundtitle = pg.image.load(("img/chartstuff/r" + str(roundnum) + ".png"))
     #assigning temp variables due to layout
-    namea = Label
+    namea = Label()
     namea.text = playertable[0].name
     namea.center = (250,260)
-    nameb = Label
+    nameb = Label()
     nameb.text = playertable[1].name
     nameb.center = (370,260)
-    namec = Label
+    namec = Label()
     namec.text = playertable[2].name
     namec.center = (480,260)
-    named = Label
+    named = Label()
     named.text = playertable[3].name
     named.center = (600,260)
-    namee = Label
+    namee = Label()
     namee.text = playertable[4].name
     namee.center = (710,260)
-    namef = Label
+    namef = Label()
     namef.text = playertable[5].name
     namef.center = (830,260)
-    nameg = Label
+    nameg = Label()
     nameg.text = playertable[6].name
     nameg.center = (950,260)
-    nameh = Label
+    nameh = Label()
     nameh.text = playertable[7].name
     nameh.center = (1050,260)
-    namei = Label
+    namei = Label()
     namei.text = playertable[8].name
     namei.center = (1160,260)
+    pointsa = Label()
+    pointsa.text = playertable[0].points
+    pointsa.center = (250,350)
+    pointsb = Label()
+    pointsb.text = playertable[1].points
+    pointsb.center = (370,350)
+    pointsc = Label()
+    pointsc.text = playertable[2].points
+    pointsc.center = (480,350)
+    pointsd = Label()
+    pointsd.text = playertable[3].points
+    pointsd.center = (600,350)
+    pointse = Label()
+    pointse.text = playertable[4].points
+    pointse.center = (710,350)
+    pointsf = Label()
+    pointsf.text = playertable[5].points
+    pointsf.center = (830,350)
+    pointsg = Label()
+    pointsg.text = playertable[6].points
+    pointsg.center = (950,350)
+    pointsh = Label()
+    pointsh.text = playertable[7].points
+    pointsh.center = (1050,350)
+    pointsi = Label()
+    pointsi.text = playertable[8].points
+    AB1 = Label()
+    AB1.center = (320,420)
+    if playertable[0].vote == "A":
+        AB1.text = "Ally"
+    else:
+        ABV1.text = "Betray"
+    pointsi.center = (1160,350)
     for p in playertable:
         pass
     nameGroup = pg.sprite.Group(namea,nameb,namec,named,namee,namef,nameg,nameh,namei)
