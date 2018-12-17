@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/ambidex.py" line="136" mnemonic="9" />
+    <bookmark url="file://$PROJECT_DIR$/ambidex.py" line="154" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7721b12a-6553-4db3-91ac-83537f95ee5e" name="Default" comment="" />
@@ -18,7 +18,7 @@
         <entry file="file://$PROJECT_DIR$/ambidex.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="388">
-              <caret line="448" column="30" selection-start-line="448" selection-start-column="30" selection-end-line="448" selection-end-column="30" />
+              <caret line="145" column="8" selection-start-line="145" selection-start-column="8" selection-end-line="145" selection-end-column="8" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -29,50 +29,11 @@
       <file leaf-file-name="ambidex_old_text.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ambidex_old_text.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="159" column="78" selection-start-line="159" selection-start-column="11" selection-end-line="159" selection-end-column="78" />
+            <state relative-caret-position="218">
+              <caret line="163" selection-start-line="163" selection-end-line="179" selection-end-column="49" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pygame_testing.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pygame_testing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="46" selection-start-line="46" selection-end-line="46" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="basicSprite_withMultipleBoxesMe2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Unit3 SoftwareDevlopment/idea/Chap 6 Part B Codes/basicSprite_withMultipleBoxesMe2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="38" selection-start-line="38" selection-end-line="55" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="imagetesting.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Unit3 SoftwareDevlopment/idea/imagetesting.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="41" column="39" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="personalities.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/personalities.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -121,7 +82,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Course" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -144,6 +104,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Course" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -643,7 +604,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pygame_testing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
+        <state relative-caret-position="558">
           <caret line="46" selection-start-line="46" selection-end-line="46" selection-end-column="12" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
@@ -653,8 +614,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ambidex_old_text.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="159" column="78" selection-start-line="159" selection-start-column="11" selection-end-line="159" selection-end-column="78" />
+        <state relative-caret-position="218">
+          <caret line="163" selection-start-line="163" selection-end-line="179" selection-end-column="49" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -664,7 +625,7 @@
     <entry file="file://$PROJECT_DIR$/ambidex.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="388">
-          <caret line="448" column="30" selection-start-line="448" selection-start-column="30" selection-end-line="448" selection-end-column="30" />
+          <caret line="145" column="8" selection-start-line="145" selection-start-column="8" selection-end-line="145" selection-end-column="8" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
