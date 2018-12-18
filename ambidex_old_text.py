@@ -223,7 +223,7 @@ def voting():
         if p1.role == "Blue Pair":
             playertable[2].vote = p1.vote
         if p1.role == "Green Pair":
-            playertable[2].vote = p1.vote
+            playertable[4].vote = p1.vote
     time.sleep(2)
     print("The results are in! Let's see what happens...")
     wait()

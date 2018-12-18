@@ -28,11 +28,12 @@ deathmessage = [" is no longer with us.",
 
 class ABPlayer():
 
-    def __init__(self, name="Tester", points=3, role="???", vote="A", alive=True, won=False):
+    def __init__(self, name="Tester", points=3, role="???", vote="A", change="", alive=True, won=False):
         self.name = name
         self.points = points
         self.role = role
         self.vote = vote
+        self.change = change
         self.alive = alive
         self.won = won
 
@@ -496,6 +497,7 @@ def pointAssignment():
 
     global playertable
     global layout
+    global
     if layout.upper() == "A":
         a = 0
         b = 1
@@ -528,59 +530,98 @@ def pointAssignment():
         i = 8
     if playertable[a].vote == "A" and playertable[c].vote == "A":
         playertable[a].points = playertable[a].points + 2
+        playertable[a].change = "+2"
         playertable[b].points = playertable[b].points + 2
+        playertable[b].change = "+2"
         playertable[c].points = playertable[c].points + 2
+        playertable[a].change = "+2"
         print(playertable[a].role + " and " + playertable[c].role + " both allied. Both parties gain 2 points.")
     elif playertable[a].vote == "A" and playertable[c].vote == "B":
         playertable[a].points = playertable[a].points - 2
+        playertable[a].change = "-2"
         playertable[b].points = playertable[b].points - 2
+        playertable[b].change = "-2"
         playertable[c].points = playertable[c].points + 3
+        playertable[c].change = "+3"
         print(playertable[a].role + " allied while " + playertable[c].role + " betrayed. " + playertable[a].role + " loses 2 points while " + playertable[c].role + " gains 3.")
     elif playertable[a].vote == "B" and playertable[c].vote == "A":
         playertable[a].points = playertable[a].points + 3
+        playertable[a].change = "+3"
         playertable[b].points = playertable[b].points + 3
+        playertable[b].change = "+3"
         playertable[c].points = playertable[c].points - 2
+        playertable[c].change = "-2"
         print(playertable[c].role + " allied while " + playertable[a].role + " betrayed. " + playertable[c].role + " loses 2 points while " + playertable[a].role + " gains 3.")
     else:
         print(playertable[a].role + " and " + playertable[c].role + " both betrayed each other. Nothing happened with their scores.")
-    time.sleep(2)
+
+        playertable[a].change = "0"
+        playertable[b].change = "0"
+        playertable[c].change = "0"
     if playertable[d].vote == "A" and playertable[f].vote == "A":
         playertable[d].points = playertable[d].points + 2
+        playertable[d].change = "+2"
         playertable[e].points = playertable[e].points + 2
+        playertable[e].change = "+2"
         playertable[f].points = playertable[f].points + 2
+
+        playertable[f].change = "+2"
         print(playertable[d].role + " and " + playertable[f].role + " both allied. Both parties gain 2 points.")
     elif playertable[d].vote == "A" and playertable[f].vote == "B":
         playertable[d].points = playertable[d].points - 2
+
+        playertable[d].change = "-2"
         playertable[e].points = playertable[e].points - 2
+
+        playertable[e].change = "-2"
         playertable[f].points = playertable[f].points + 3
+
+        playertable[f].change = "+3"
         print(playertable[d].role + " allied while " + playertable[f].role + " betrayed. " + playertable[
             a].role + " loses 2 points while " + playertable[f].role + " gains 3.")
     elif playertable[d].vote == "B" and playertable[f].vote == "A":
         playertable[d].points = playertable[d].points + 3
+        playertable[d].change = "+3"
         playertable[e].points = playertable[e].points + 3
+        playertable[e].change = "+3"
         playertable[f].points = playertable[f].points - 2
+        playertable[f].change = "-2"
         print(playertable[f].role + " allied while " + playertable[d].role + " betrayed. " + playertable[
             c].role + " loses 2 points while " + playertable[d].role + " gains 3.")
     else:
         print(playertable[d].role + " and " + playertable[f].role + " both betrayed each other. Nothing happened with their scores.")
-    time.sleep(2)
+        playertable[d].change = "0"
+        playertable[e].change = "0"
+        playertable[f].change = "0"
     if playertable[g].vote == "A" and playertable[i].vote == "A":
         playertable[g].points = playertable[g].points + 2
+        playertable[g].change = "+2"
         playertable[h].points = playertable[h].points + 2
+        playertable[h].change = "+2"
         playertable[i].points = playertable[i].points + 2
+        playertable[i].change = "+2"
         print(playertable[g].role + " and " + playertable[i].role + " both allied. Both parties gain 2 points.")
     elif playertable[g].vote == "A" and playertable[i].vote == "B":
         playertable[g].points = playertable[g].points - 2
+        playertable[g].change = "-2"
         playertable[h].points = playertable[h].points - 2
+        playertable[h].change = "-2"
         playertable[i].points = playertable[i].points + 3
+        playertable[i].change = "+3"
         print(playertable[g].role + " allied while " + playertable[i].role + " betrayed. " + playertable[g].role + " loses 2 points while " + playertable[i].role + " gains 3.")
     elif playertable[g].vote == "B" and playertable[i].vote == "A":
         playertable[g].points = playertable[g].points + 3
+        playertable[g].change = "+3"
         playertable[h].points = playertable[h].points + 3
+        playertable[h].change = "+3"
         playertable[i].points = playertable[i].points - 2
+        playertable[i].change = "-2"
         print(playertable[i].role + " allied while " + playertable[g].role + " betrayed. " + playertable[i].role + " loses 2 points while " + playertable[g].role + " gains 3.")
     else:
         print(playertable[g].role + " and " + playertable[i].role + " both betrayed each other. Nothing happened with their scores.")
+        playertable[g].change = "0"
+        playertable[h].change = "0"
+        playertable[i].change = "0"
 def imgChart():
     global p1
     global p2
@@ -594,11 +635,10 @@ def imgChart():
     global playertable
     pg.display.set_caption("Python Ambidex Game")
     global screen
-    roundnum = 3
-    custom_count = 0
     bg = pg.image.load(("img/chartstuff/blankchart" + layout.upper() + ".png"))
     roundtitle = pg.image.load(("img/chartstuff/r" + str(roundnum) + ".png"))
-    #assigning temp variables due to layout
+
+    # pairs
     namea = Label()
     namea.text = playertable[0].name
     namea.center = (250,260)
@@ -607,64 +647,172 @@ def imgChart():
     nameb.center = (370,260)
     namec = Label()
     namec.text = playertable[2].name
-    namec.center = (480,260)
+    namec.center = (600,260)
     named = Label()
     named.text = playertable[3].name
-    named.center = (600,260)
+    named.center = (720,260)
     namee = Label()
     namee.text = playertable[4].name
-    namee.center = (710,260)
+    namee.center = (940,260)
     namef = Label()
     namef.text = playertable[5].name
-    namef.center = (830,260)
+    namef.center = (1050,260)
+
+    #solos
     nameg = Label()
     nameg.text = playertable[6].name
-    nameg.center = (950,260)
     nameh = Label()
     nameh.text = playertable[7].name
-    nameh.center = (1050,260)
     namei = Label()
     namei.text = playertable[8].name
-    namei.center = (1160,260)
+    #logic
+    if layout == "A":
+        nameh.center = (480,260)
+        namei.center = (820,260)
+        nameg.center = (1180,260)
+    if layout == "B":
+        namei.center = (480,260)
+        nameg.center = (820,260)
+        nameh.center = (1180,260)
+    if layout == "C":
+        nameh.center = (480,260)
+        namei.center = (820,260)
+        nameg.center = (1180,260)
+
+    # points, pairs
     pointsa = Label()
-    pointsa.text = playertable[0].points
+    pointsa.text = str(playertable[0].points)
     pointsa.center = (250,350)
     pointsb = Label()
-    pointsb.text = playertable[1].points
+    pointsb.text = str(playertable[1].points)
     pointsb.center = (370,350)
     pointsc = Label()
-    pointsc.text = playertable[2].points
-    pointsc.center = (480,350)
+    pointsc.text = str(playertable[2].points)
+    pointsc.center = (600,350)
     pointsd = Label()
-    pointsd.text = playertable[3].points
-    pointsd.center = (600,350)
+    pointsd.text = str(playertable[3].points)
+    pointsd.center = (720,350)
     pointse = Label()
-    pointse.text = playertable[4].points
-    pointse.center = (710,350)
+    pointse.text = str(playertable[4].points)
+    pointse.center = (940,350)
     pointsf = Label()
-    pointsf.text = playertable[5].points
-    pointsf.center = (830,350)
+    pointsf.text = str(playertable[5].points)
+    pointsf.center = (1050,350)
+
+    # solos
     pointsg = Label()
-    pointsg.text = playertable[6].points
-    pointsg.center = (950,350)
+    pointsg.text = str(playertable[6].points)
     pointsh = Label()
-    pointsh.text = playertable[7].points
-    pointsh.center = (1050,350)
+    pointsh.text = str(playertable[7].points)
     pointsi = Label()
-    pointsi.text = playertable[8].points
+    pointsi.text = str(playertable[8].points)
+    #logic
+    if layout == "A":
+        pointsh.center = (480,350)
+        pointsi.center = (820,350)
+        pointsg.center = (1180,350)
+    if layout == "B":
+        pointsi.center = (480,350)
+        pointsg.center = (820,350)
+        pointsh.center = (1180,350)
+    if layout == "C":
+        pointsh.center = (480,350)
+        pointsi.center = (820,350)
+        pointsg.center = (1180,350)
+    #A/B, pairs
     AB1 = Label()
     AB1.center = (320,420)
+    AB2 = Label()
+    AB2.center = (650,420)
+    AB3 = Label()
+    AB3.center = (1000,420)
+    AB4 = Label()
+    AB5 = Label()
+    AB6 = Label()
     if playertable[0].vote == "A":
         AB1.text = "Ally"
     else:
-        ABV1.text = "Betray"
-    pointsi.center = (1160,350)
-    for p in playertable:
-        pass
+        AB1.text = "Betray"
+    if playertable[2].vote == "A":
+        AB2.text = "Ally"
+    else:
+        AB2.text = "Betray"
+    if playertable[4].vote == "A":
+        AB3.text = "Ally"
+    else:
+        AB3.text = "Betray"
+    #solos
+    if playertable[6].vote == "A":
+        AB4.text = "Ally"
+    else:
+        AB4.text = "Betray"
+    if playertable[7].vote == "A":
+        AB5.text = "Ally"
+    else:
+        AB5.text = "Betray"
+    if playertable[8].vote == "A":
+        AB6.text = "Ally"
+    else:
+        AB6.text = "Betray"
+    #solos-logic
+    if layout == "A":
+        AB5.center = (480,420)
+        AB6.center = (820,420)
+        AB4.center = (1180,420)
+    if layout == "B":
+        AB6.center = (480,420)
+        AB4.center = (820,420)
+        AB5.center = (1180,420)
+    if layout == "C":
+        AB5.center = (480,420)
+        AB6.center = (820,420)
+        AB4.center = (1180,420)
+
+    #points changes, pairs
+    changea = Label()
+    changeb = Label()
+    changec = Label()
+    changed = Label()
+    changee = Label()
+    changef = Label()
+    changeg = Label()
+    changeh = Label()
+    changei = Label()
+    changea.text = playertable[0].change
+    changeb.text = playertable[1].change
+    changec.text = playertable[2].change
+    changed.text = playertable[3].change
+    changee.text = playertable[4].change
+    changef.text = playertable[5].change
+    changeg.text = playertable[6].change
+    changeh.text = playertable[7].change
+    changei.text = playertable[8].change
+    changea.center = (250,490)
+    changeb.center = (370,490)
+    changec.center = (600,490)
+    changed.center = (710,490)
+    changee.center = (930,490)
+    changef.center = (1050,490)
+    if layout == "A":
+        changeh.center = (480,420)
+        changei.center = (820,420)
+        changeg.center = (1180,420)
+    if layout == "B":
+        changei.center = (480,420)
+        changeg.center = (820,420)
+        changeh.center = (1180,420)
+    if layout == "C":
+        changeh.center = (480,420)
+        changei.center = (820,420)
+        changeg.center = (1180,420)
+
+
+
+
     nameGroup = pg.sprite.Group(namea,nameb,namec,named,namee,namef,nameg,nameh,namei)
-    sPointsGroup = pg.sprite.Group()
-    voteGroup = pg.sprite.Group()
-    changeGroup = pg.sprite.Group()
+    sPointsGroup = pg.sprite.Group(pointsa,pointsb,pointsc,pointsd,pointse,pointsf,pointsg,pointsh,pointsi)
+    voteGroup = pg.sprite.Group(AB1,AB2,AB3,AB4,AB5,AB6)
+    changeGroup = pg.sprite.Group(changea,changeb,changec,changed,changee,changef,changeg,changeh,changeh,changei)
     nPointsGroup = pg.sprite.Group()
     pointAssignment()
     clock = pg.time.Clock()
@@ -680,6 +828,15 @@ def imgChart():
         pg.mouse.set_visible(True)
         screen.blit(bg, (0, 0))
         screen.blit(roundtitle, (640, 40))
+        nameGroup.update()
+        nameGroup.draw(screen)
+        sPointsGroup.update()
+        sPointsGroup.draw(screen)
+        voteGroup.update()
+        voteGroup.draw(screen)
+        changeGroup.update()
+        changeGroup.draw(screen)
+        pg.mouse.set_visible(True)
         pg.display.flip()
 
 

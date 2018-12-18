@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/ambidex.py" line="154" mnemonic="9" />
+    <bookmark url="file://$PROJECT_DIR$/ambidex.py" line="155" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7721b12a-6553-4db3-91ac-83537f95ee5e" name="Default" comment="" />
@@ -17,8 +17,8 @@
       <file leaf-file-name="ambidex.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ambidex.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="655" column="18" selection-start-line="655" selection-start-column="18" selection-end-line="655" selection-end-column="18" />
+            <state relative-caret-position="388">
+              <caret line="832" column="20" selection-start-line="832" selection-start-column="20" selection-end-line="832" selection-end-column="20" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -29,8 +29,8 @@
       <file leaf-file-name="ambidex_old_text.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ambidex_old_text.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="163" selection-start-line="163" selection-end-line="179" selection-end-column="49" />
+            <state relative-caret-position="1785">
+              <caret line="225" column="25" selection-start-line="225" selection-start-column="25" selection-end-line="225" selection-end-column="25" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -53,6 +53,7 @@
       <find>VALID</find>
       <find>pygame</find>
       <find>PLATES</find>
+      <find>sleep</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -71,7 +72,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="78" />
     <option name="y" value="21" />
     <option name="width" value="974" />
@@ -614,8 +615,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ambidex_old_text.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="163" selection-start-line="163" selection-end-line="179" selection-end-column="49" />
+        <state relative-caret-position="1785">
+          <caret line="225" column="25" selection-start-line="225" selection-start-column="25" selection-end-line="225" selection-end-column="25" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -624,8 +625,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ambidex.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="655" column="18" selection-start-line="655" selection-start-column="18" selection-end-line="655" selection-end-column="18" />
+        <state relative-caret-position="388">
+          <caret line="832" column="20" selection-start-line="832" selection-start-column="20" selection-end-line="832" selection-end-column="20" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
