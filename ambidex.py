@@ -446,13 +446,6 @@ def layoutChooser():
     nvlText.text = "Select your team layout."
     nvlText.center = (640,600)
 
-    #buttonA = pg.image.load(("img/layout/layoutA.png"))
-    #buttonA = buttonA.convert_alpha()
-    #buttonB = pg.image.load(("img/layout/layoutB.png"))
-    #buttonB = buttonB.convert_alpha()
-    #buttonC = pg.image.load(("img/layout/layoutC.png"))
-    #buttonC = buttonC.convert_alpha()
-
     buttonA = Button()
     buttonA.text = "Layout A: Red Pair vs. Blue Solo, Blue Pair vs. Green Solo, Green Pair vs. Red Solo"
     buttonA.center = 640,160
@@ -494,10 +487,8 @@ def layoutChooser():
         pg.display.flip()
 
 def pointAssignment():
-
     global playertable
     global layout
-    global
     if layout.upper() == "A":
         a = 0
         b = 1
@@ -794,29 +785,67 @@ def imgChart():
     changee.center = (930,490)
     changef.center = (1050,490)
     if layout == "A":
-        changeh.center = (480,420)
-        changei.center = (820,420)
-        changeg.center = (1180,420)
+        changeh.center = (480,490)
+        changei.center = (820,490)
+        changeg.center = (1180,490)
     if layout == "B":
-        changei.center = (480,420)
-        changeg.center = (820,420)
-        changeh.center = (1180,420)
+        changei.center = (480,490)
+        changeg.center = (820,490)
+        changeh.center = (1180,490)
     if layout == "C":
-        changeh.center = (480,420)
-        changei.center = (820,420)
-        changeg.center = (1180,420)
+        changeh.center = (480,490)
+        changei.center = (820,490)
+        changeg.center = (1180,490)
 
+    npointsa = Label()
+    npointsa.text = str(playertable[0].points)
+    npointsa.center = (250,570)
+    npointsb = Label()
+    npointsb.text = str(playertable[1].points)
+    npointsb.center = (370,570)
+    npointsc = Label()
+    npointsc.text = str(playertable[2].points)
+    npointsc.center = (600,570)
+    npointsd = Label()
+    npointsd.text = str(playertable[3].points)
+    npointsd.center = (720,570)
+    npointse = Label()
+    npointse.text = str(playertable[4].points)
+    npointse.center = (940,570)
+    npointsf = Label()
+    npointsf.text = str(playertable[5].points)
+    npointsf.center = (1050,570)
 
-
+    # solos
+    npointsg = Label()
+    npointsg.text = str(playertable[6].points)
+    npointsh = Label()
+    npointsh.text = str(playertable[7].points)
+    npointsi = Label()
+    npointsi.text = str(playertable[8].points)
+    #logic
+    if layout == "A":
+        npointsh.center = (480,570)
+        npointsi.center = (820,570)
+        npointsg.center = (1180,570)
+    if layout == "B":
+        npointsi.center = (480,570)
+        npointsg.center = (820,570)
+        npointsh.center = (1180,570)
+    if layout == "C":
+        npointsh.center = (480,570)
+        npointsi.center = (820,570)
+        npointsg.center = (1180,570)
 
     nameGroup = pg.sprite.Group(namea,nameb,namec,named,namee,namef,nameg,nameh,namei)
     sPointsGroup = pg.sprite.Group(pointsa,pointsb,pointsc,pointsd,pointse,pointsf,pointsg,pointsh,pointsi)
     voteGroup = pg.sprite.Group(AB1,AB2,AB3,AB4,AB5,AB6)
     changeGroup = pg.sprite.Group(changea,changeb,changec,changed,changee,changef,changeg,changeh,changeh,changei)
-    nPointsGroup = pg.sprite.Group()
+    nPointsGroup = pg.sprite.Group(npointsa,npointsb,npointsc,npointsd,npointse,npointsf,npointsg,npointsh,npointsi)
     pointAssignment()
     clock = pg.time.Clock()
     keepGoing = True
+    sPointsGroup.update()
     while keepGoing:
         clock.tick(30)
         for event in pg.event.get():
@@ -830,12 +859,14 @@ def imgChart():
         screen.blit(roundtitle, (640, 40))
         nameGroup.update()
         nameGroup.draw(screen)
-        sPointsGroup.update()
+
         sPointsGroup.draw(screen)
         voteGroup.update()
         voteGroup.draw(screen)
         changeGroup.update()
         changeGroup.draw(screen)
+        nPointsGroup.update()
+        nPointsGroup.draw(screen)
         pg.mouse.set_visible(True)
         pg.display.flip()
 
