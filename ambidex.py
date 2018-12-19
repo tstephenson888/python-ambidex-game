@@ -841,8 +841,8 @@ def imgChart():
     sPointsGroup = pg.sprite.Group(pointsa,pointsb,pointsc,pointsd,pointse,pointsf,pointsg,pointsh,pointsi)
     voteGroup = pg.sprite.Group(AB1,AB2,AB3,AB4,AB5,AB6)
     changeGroup = pg.sprite.Group(changea,changeb,changec,changed,changee,changef,changeg,changeh,changeh,changei)
-    nPointsGroup = pg.sprite.Group(npointsa,npointsb,npointsc,npointsd,npointse,npointsf,npointsg,npointsh,npointsi)
     pointAssignment()
+    nPointsGroup = pg.sprite.Group(npointsa,npointsb,npointsc,npointsd,npointse,npointsf,npointsg,npointsh,npointsi)
     clock = pg.time.Clock()
     keepGoing = True
     sPointsGroup.update()
