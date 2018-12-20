@@ -458,7 +458,7 @@ def layoutChooser():
     buttonGroup = pg.sprite.Group(buttonA,buttonB,buttonC)
     labelGroup = pg.sprite.Group(nvlText)
     keepGoing = True
-    abroller()
+
     while keepGoing:
         for event in pg.event.get():
             if event.type == pg.QUIT:
@@ -468,11 +468,11 @@ def layoutChooser():
                     layout = "A"
                     imgChart()
                     keepGoing = False
-                if buttonB.click:
+                elif buttonB.click:
                     layout = "B"
                     imgChart()
                     keepGoing = False
-                if buttonC.click:
+                elif buttonC.click:
                     layout = "C"
                     imgChart()
                     keepGoing = False
@@ -485,6 +485,7 @@ def layoutChooser():
         labelGroup.draw(screen)
         pg.mouse.set_visible(True)
         pg.display.flip()
+        abroller()
 
 def pointAssignment():
     global playertable
@@ -624,6 +625,7 @@ def imgChart():
     global p8
     global p9
     global playertable
+    global layout
     pg.display.set_caption("Python Ambidex Game")
     global screen
     bg = pg.image.load(("img/chartstuff/blankchart" + layout.upper() + ".png"))
@@ -707,9 +709,9 @@ def imgChart():
         pointsg.center = (820,350)
         pointsh.center = (1180,350)
     if layout == "C":
-        pointsh.center = (480,350)
-        pointsi.center = (820,350)
-        pointsg.center = (1180,350)
+        pointsg.center = (480,350)
+        pointsh.center = (820,350)
+        pointsi.center = (1180,350)
     #A/B, pairs
     AB1 = Label()
     AB1.center = (320,420)
@@ -755,10 +757,11 @@ def imgChart():
         AB4.center = (820,420)
         AB5.center = (1180,420)
     if layout == "C":
-        AB5.center = (480,420)
-        AB6.center = (820,420)
-        AB4.center = (1180,420)
+        AB4.center = (480,420)
+        AB5.center = (820,420)
+        AB6.center = (1180,420)
 
+    pointAssignment()
     #points changes, pairs
     changea = Label()
     changeb = Label()
@@ -793,10 +796,9 @@ def imgChart():
         changeg.center = (820,490)
         changeh.center = (1180,490)
     if layout == "C":
-        changeh.center = (480,490)
-        changei.center = (820,490)
-        changeg.center = (1180,490)
-
+        changeg.center = (480,490)
+        changeh.center = (820,490)
+        changei.center = (1180,490)
     npointsa = Label()
     npointsa.text = str(playertable[0].points)
     npointsa.center = (250,570)
@@ -833,16 +835,16 @@ def imgChart():
         npointsg.center = (820,570)
         npointsh.center = (1180,570)
     if layout == "C":
-        npointsh.center = (480,570)
-        npointsi.center = (820,570)
-        npointsg.center = (1180,570)
-
+        npointsg.center = (480,570)
+        npointsh.center = (820,570)
+        npointsi.center = (1180,570)
     nameGroup = pg.sprite.Group(namea,nameb,namec,named,namee,namef,nameg,nameh,namei)
     sPointsGroup = pg.sprite.Group(pointsa,pointsb,pointsc,pointsd,pointse,pointsf,pointsg,pointsh,pointsi)
     voteGroup = pg.sprite.Group(AB1,AB2,AB3,AB4,AB5,AB6)
     changeGroup = pg.sprite.Group(changea,changeb,changec,changed,changee,changef,changeg,changeh,changeh,changei)
-    pointAssignment()
     nPointsGroup = pg.sprite.Group(npointsa,npointsb,npointsc,npointsd,npointse,npointsf,npointsg,npointsh,npointsi)
+    continueBtn = Button("Continue", 1080,640)
+    buttonGroup = pg.sprite.Group(continueBtn)
     clock = pg.time.Clock()
     keepGoing = True
     sPointsGroup.update()
@@ -851,6 +853,10 @@ def imgChart():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 keepGoing = False
+            elif event.type == pg.MOUSEBUTTONDOWN:
+                if continueBtn.click():
+                    keepGoing = False
+                    StatusScreen()
         screen.blit(bg, (0, 0))
 
         # bg.blit(nvlText,nvlText.get_rect())
@@ -867,10 +873,91 @@ def imgChart():
         changeGroup.draw(screen)
         nPointsGroup.update()
         nPointsGroup.draw(screen)
+        buttonGroup.update()
+        buttonGroup.draw(screen)
         pg.mouse.set_visible(True)
         pg.display.flip()
 
-
+def StatusScreen():
+    global screen
+    global p1
+    global p2
+    global p3
+    global p4
+    global p5
+    global p6
+    global p7
+    global p8
+    global p9
+    global playertable
+    global layout
+    bg = pg.Surface(screen.get_size())
+    bg = bg.convert()
+    bg.fill((0,118,163))
+    textBox = pg.image.load(("img/UI/textBox.png"))
+    textBox = textBox.convert_alpha()
+    nvlText = Label()
+    nvlText.center = (640,580)
+    nvlText2 = Label()
+    nvlText2.center = (640,610)
+    nvlText3 = Label()
+    nvlText3.center = (640,640)
+    nvlText4 = Label()
+    nvlText4.center = (640,640)
+    for x in range(0,9):
+        if playertable[x].points <= 0:
+            if playertable[x].alive:
+                playertable[x].kill()
+                if not nvlText.text:
+                    nvlText.text = playertable[x].name + random.choice(deathmessage)
+                    pass
+                elif not nvlText2.text:
+                    nvlText2.text = playertable[x].name + random.choice(deathmessage)
+                    pass
+                elif not nvlText3.text:
+                    nvlText3.text = playertable[x].name + random.choice(deathmessage)
+                    pass
+                elif not nvlText4.text:
+                    nvlText4.text = playertable[x].name + random.choice(deathmessage)
+                    pass
+    for x in range(0,9):
+        if playertable[x].points >= 9:
+            playertable[x].won = True
+            temp = (playertable[x].name + " has " + str(playertable[x].points) + " points, and leaves the facility.")
+            if not nvlText.text:
+                nvlText.text = temp
+            elif not nvlText2.text:
+                nvlText2.text = temp
+            elif not nvlText3.text:
+                nvlText3.text = temp
+            elif not nvlText4.text:
+                nvlText4.text = temp
+            winflag = True
+        else:
+            winflag = False
+    labelGroup = pg.sprite.Group(nvlText,nvlText2,nvlText3)
+    continueBtn = Button("Continue", 1080,400)
+    buttonGroup = pg.sprite.Group(continueBtn)
+    keepGoing = True
+    while keepGoing:
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                keepGoing = False
+            elif event.type == pg.MOUSEBUTTONDOWN:
+                if continueBtn.click():
+                    if winflag:
+                        quit()
+                    teamShuffle()
+                    keepGoing = False
+        screen.blit(bg, (0, 0))
+        buttonGroup.clear(screen, bg)
+        buttonGroup.update()
+        buttonGroup.draw(screen)
+        bg.blit(textBox,(100,550))
+        labelGroup.update()
+        labelGroup.draw(screen)
+        pg.mouse.set_visible(True)
+        pg.display.flip()
 def main():
     setup()
     setup2()
@@ -878,5 +965,6 @@ def main():
     teamShuffle()
     layoutChooser()
     imgChart()
+    StatusScreen()
 
 main()
