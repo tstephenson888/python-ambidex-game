@@ -904,6 +904,8 @@ def StatusScreen():
     nvlText3.center = (640,640)
     nvlText4 = Label()
     nvlText4.center = (640,640)
+    eventflag = False
+    winflag = False
     for x in range(9):
         if playertable[x].points <= 0:
             if playertable[x].alive:
@@ -917,6 +919,7 @@ def StatusScreen():
                 elif not nvlText4.text:
                     nvlText4.text = playertable[x].name + random.choice(deathmessage)
                 eventflag = True
+                print("playerdeath DETECTED")
     for x in range(9):
         if playertable[x].points >= 9:
             playertable[x].won = True
@@ -929,11 +932,10 @@ def StatusScreen():
                 nvlText3.text = temp
             elif not nvlText4.text:
                 nvlText4.text = temp
+
+            print("playerwin DETECTED")
             eventflag = True
             winflag = True
-        else:
-            eventflag = False
-            winflag = False
     labelGroup = pg.sprite.Group(nvlText,nvlText2,nvlText3)
     continueBtn = Button("Continue", 1080,400)
     buttonGroup = pg.sprite.Group(continueBtn)
