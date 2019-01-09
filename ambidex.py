@@ -628,7 +628,7 @@ def imgChart():
     global layout
     pg.display.set_caption("Python Ambidex Game")
     global screen
-    bg = pg.image.load(("img/chartstuff/blankchart" + layout.upper() + ".png"))
+    bg = pg.image.load(("img/chartstuff/blankchart.png"))
     roundtitle = pg.image.load(("img/chartstuff/r" + str(roundnum) + ".png"))
 
     # pairs
@@ -668,9 +668,9 @@ def imgChart():
         nameg.center = (820,260)
         nameh.center = (1180,260)
     if layout == "C":
-        nameh.center = (480,260)
-        namei.center = (820,260)
-        nameg.center = (1180,260)
+        nameg.center = (480,260)
+        nameh.center = (820,260)
+        namei.center = (1180,260)
 
     # points, pairs
     pointsa = Label()
@@ -904,23 +904,20 @@ def StatusScreen():
     nvlText3.center = (640,640)
     nvlText4 = Label()
     nvlText4.center = (640,640)
-    for x in range(0,9):
+    for x in range(9):
         if playertable[x].points <= 0:
             if playertable[x].alive:
                 playertable[x].kill()
                 if not nvlText.text:
                     nvlText.text = playertable[x].name + random.choice(deathmessage)
-                    pass
                 elif not nvlText2.text:
                     nvlText2.text = playertable[x].name + random.choice(deathmessage)
-                    pass
                 elif not nvlText3.text:
                     nvlText3.text = playertable[x].name + random.choice(deathmessage)
-                    pass
                 elif not nvlText4.text:
                     nvlText4.text = playertable[x].name + random.choice(deathmessage)
-                    pass
-    for x in range(0,9):
+                eventflag = True
+    for x in range(9):
         if playertable[x].points >= 9:
             playertable[x].won = True
             temp = (playertable[x].name + " has " + str(playertable[x].points) + " points, and leaves the facility.")
@@ -932,14 +929,18 @@ def StatusScreen():
                 nvlText3.text = temp
             elif not nvlText4.text:
                 nvlText4.text = temp
+            eventflag = True
             winflag = True
         else:
+            eventflag = False
             winflag = False
     labelGroup = pg.sprite.Group(nvlText,nvlText2,nvlText3)
     continueBtn = Button("Continue", 1080,400)
     buttonGroup = pg.sprite.Group(continueBtn)
     keepGoing = True
     while keepGoing:
+        if not eventflag:
+            teamShuffle()
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 keepGoing = False
@@ -947,7 +948,6 @@ def StatusScreen():
                 if continueBtn.click():
                     if winflag:
                         quit()
-                    teamShuffle()
                     keepGoing = False
         screen.blit(bg, (0, 0))
         buttonGroup.clear(screen, bg)
