@@ -385,7 +385,7 @@ def teamShuffle():
     textBox = textBox.convert_alpha()
     nvlText = Label()
     nvlText.text = "The teams have been scrambled!"
-    log.write("Team Shuffle:\n")
+    log.write("Team Shuffle:\n\n")
     nvlText.center = (640,600)
 
     PredText = Label()
@@ -864,7 +864,7 @@ def imgChart():
     clock = pg.time.Clock()
     keepGoing = True
     sPointsGroup.update()
-    log.write("Points Update:\n")
+    log.write("Points Update:\n\n")
     for x in range(9):
         log.write(playertable[x].name + ": " + str(playertable[x].points) + "\n")
     while keepGoing:
