@@ -128,7 +128,7 @@ playertable = [p1, p2, p3, p4, p5, p6, p7, p8, p9]
 layout = "R"
 roundnum = 0
 screen = pg.display.set_mode((1280, 720))
-log = open("ambidex_log_" + str(datetime.date.today()) + str(random.randint(0,99999)) + ".txt","w+")
+log = open("ambidex_log_" + str(datetime.date.today()) + "_" + str(random.randint(0,99999)) + ".txt","w+")
 log.write("Ambidex Game Log: " + str(datetime.datetime.now()) + "\n\n")
 def abroller():
     #RNG time
@@ -291,7 +291,7 @@ def partOverview():
     global playertable
     log.write("Participants:\n" + playertable[0].name + ", " + playertable[1].name + ", "+ playertable[2].name + ", "
               + playertable[3].name + ", "+ playertable[4].name + ", "+ playertable[5].name + ", "+ playertable[6].name
-              + ", "+ playertable[7].name + ", "+ playertable[8].name + ".")
+              + ", "+ playertable[7].name + ", "+ playertable[8].name + ".\n\n")
     bg = pg.Surface(screen.get_size())
     bg = bg.convert()
     bg.fill((0,118,163))
