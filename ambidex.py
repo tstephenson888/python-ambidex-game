@@ -1,6 +1,8 @@
 import os
 import random
 import time
+import datetime
+import sys
 
 import pygame as pg
 
@@ -50,7 +52,7 @@ p7 = ABPlayer("DEBUG")
 p8 = ABPlayer("DEBUG")
 p9 = ABPlayer("DEBUG")
 playertable = [p1, p2, p3, p4, p5, p6, p7, p8, p9]
-pk = pg.font.SysFont("Pokemon Classic.ttf",40)
+
 class Label(pg.sprite.Sprite):
     """Label Class (simplest version
         Atttributes :
@@ -124,9 +126,10 @@ p9 = ABPlayer("DEBUG")
 playable = False
 playertable = [p1, p2, p3, p4, p5, p6, p7, p8, p9]
 layout = "R"
-roundnum = 1
+roundnum = 0
 screen = pg.display.set_mode((1280, 720))
-
+log = open("ambidex_log_" + str(datetime.date.today()) + str(random.randint(0,99999)) + ".txt","w+")
+log.write("Ambidex Game Log: " + str(datetime.datetime.now()) + "\n\n")
 def abroller():
     #RNG time
     for index in range(0,8):
@@ -286,6 +289,9 @@ def partOverview():
     global p8
     global p9
     global playertable
+    log.write("Participants:\n" + playertable[0].name + ", " + playertable[1].name + ", "+ playertable[2].name + ", "
+              + playertable[3].name + ", "+ playertable[4].name + ", "+ playertable[5].name + ", "+ playertable[6].name
+              + ", "+ playertable[7].name + ", "+ playertable[8].name + ".")
     bg = pg.Surface(screen.get_size())
     bg = bg.convert()
     bg.fill((0,118,163))
@@ -355,6 +361,8 @@ def teamShuffle():
     global p9
     global playertable
     global layout
+    global roundnum
+    roundnum = roundnum + 1
     bg = pg.image.load("img/layout/scrambled.png")
     bg = bg.convert_alpha()
 
@@ -377,31 +385,39 @@ def teamShuffle():
     textBox = textBox.convert_alpha()
     nvlText = Label()
     nvlText.text = "The teams have been scrambled!"
+    log.write("Team Shuffle:\n")
     nvlText.center = (640,600)
 
     PredText = Label()
     PredText.text = playertable[0].name + " & " + playertable[1].name
     PredText.center = (550,220)
+    log.write(playertable[0].role + ": " + PredText.text+'\n')
 
     PbluText = Label()
     PbluText.text = playertable[2].name + " & " + playertable[3].name
     PbluText.center = (550,340)
+    log.write(playertable[2].role + ": " + PbluText.text+'\n')
 
     PgrnText = Label()
     PgrnText.text = playertable[4].name + " & " + playertable[5].name
     PgrnText.center = (550,460)
+    log.write(playertable[4].role + ": " + PgrnText.text +'\n')
 
     SredText = Label()
     SredText.text = playertable[6].name
     SredText.center = (890,220)
+    log.write(playertable[6].role + ": " + SredText.text +'\n')
 
     SbluText = Label()
     SbluText.text = playertable[7].name
     SbluText.center = (890,340)
+    log.write(playertable[7].role + ": " + SbluText.text +'\n')
 
     SgrnText = Label()
     SgrnText.text = playertable[8].name
     SgrnText.center = (890,460)
+    log.write(playertable[8].role + ": " + SgrnText.text + "\n")
+
     labelGroup = pg.sprite.Group(PredText,PbluText,PgrnText,SredText,SbluText,SgrnText,nvlText)
 
     continueBtn = Button("Continue", 1080,640)
@@ -445,7 +461,7 @@ def layoutChooser():
     nvlText = Label()
     nvlText.text = "Select your team layout."
     nvlText.center = (640,600)
-
+    log.write("=== Round " + str(roundnum) + " ===\n\n")
     buttonA = Button()
     buttonA.text = "Layout A: Red Pair vs. Blue Solo, Blue Pair vs. Green Solo, Green Pair vs. Red Solo"
     buttonA.center = 640,160
@@ -467,6 +483,7 @@ def layoutChooser():
                 if buttonA.click:
                     layout = "A"
                     imgChart()
+
                     keepGoing = False
                 elif buttonB.click:
                     layout = "B"
@@ -527,7 +544,7 @@ def pointAssignment():
         playertable[b].change = "+2"
         playertable[c].points = playertable[c].points + 2
         playertable[a].change = "+2"
-        print(playertable[a].role + " and " + playertable[c].role + " both allied. Both parties gain 2 points.")
+        log.write(playertable[a].role + "'s team and " + playertable[c].role + " both allied. Both parties gain 2 points.\n")
     elif playertable[a].vote == "A" and playertable[c].vote == "B":
         playertable[a].points = playertable[a].points - 2
         playertable[a].change = "-2"
@@ -535,7 +552,7 @@ def pointAssignment():
         playertable[b].change = "-2"
         playertable[c].points = playertable[c].points + 3
         playertable[c].change = "+3"
-        print(playertable[a].role + " allied while " + playertable[c].role + " betrayed. " + playertable[a].role + " loses 2 points while " + playertable[c].role + " gains 3.")
+        log.write(playertable[a].role + "'s team allied while " + playertable[c].role + " betrayed. " + playertable[a].role + "'s team loses 2 points while " + playertable[c].role + " gains 3.\n")
     elif playertable[a].vote == "B" and playertable[c].vote == "A":
         playertable[a].points = playertable[a].points + 3
         playertable[a].change = "+3"
@@ -543,9 +560,9 @@ def pointAssignment():
         playertable[b].change = "+3"
         playertable[c].points = playertable[c].points - 2
         playertable[c].change = "-2"
-        print(playertable[c].role + " allied while " + playertable[a].role + " betrayed. " + playertable[c].role + " loses 2 points while " + playertable[a].role + " gains 3.")
+        log.write(playertable[c].role + " allied while " + playertable[a].role + "'s team betrayed. " + playertable[c].role + " loses 2 points while " + playertable[a].role + "'s team gains 3.\n")
     else:
-        print(playertable[a].role + " and " + playertable[c].role + " both betrayed each other. Nothing happened with their scores.")
+        log.write(playertable[a].role + " and " + playertable[c].role + " both betrayed each other. Nothing happened with their scores.\n")
 
         playertable[a].change = "0"
         playertable[b].change = "0"
@@ -556,9 +573,8 @@ def pointAssignment():
         playertable[e].points = playertable[e].points + 2
         playertable[e].change = "+2"
         playertable[f].points = playertable[f].points + 2
-
         playertable[f].change = "+2"
-        print(playertable[d].role + " and " + playertable[f].role + " both allied. Both parties gain 2 points.")
+        log.write(playertable[d].role + "'s team and " + playertable[f].role + " both allied. Both parties gain 2 points.\n")
     elif playertable[d].vote == "A" and playertable[f].vote == "B":
         playertable[d].points = playertable[d].points - 2
 
@@ -569,8 +585,8 @@ def pointAssignment():
         playertable[f].points = playertable[f].points + 3
 
         playertable[f].change = "+3"
-        print(playertable[d].role + " allied while " + playertable[f].role + " betrayed. " + playertable[
-            a].role + " loses 2 points while " + playertable[f].role + " gains 3.")
+        log.write(playertable[d].role + "'s team allied while " + playertable[f].role + " betrayed. " + playertable[
+            d].role + "'s team loses 2 points while " + playertable[f].role + " gains 3.\n")
     elif playertable[d].vote == "B" and playertable[f].vote == "A":
         playertable[d].points = playertable[d].points + 3
         playertable[d].change = "+3"
@@ -578,10 +594,10 @@ def pointAssignment():
         playertable[e].change = "+3"
         playertable[f].points = playertable[f].points - 2
         playertable[f].change = "-2"
-        print(playertable[f].role + " allied while " + playertable[d].role + " betrayed. " + playertable[
-            c].role + " loses 2 points while " + playertable[d].role + " gains 3.")
+        log.write(playertable[f].role + " allied while " + playertable[d].role + "'s team betrayed. " + playertable[
+            c].role + " loses 2 points while " + playertable[d].role + "'s team gains 3.\n")
     else:
-        print(playertable[d].role + " and " + playertable[f].role + " both betrayed each other. Nothing happened with their scores.")
+        log.write(playertable[d].role + "'s team and " + playertable[f].role + " both betrayed each other. Nothing happened with their scores.\n")
         playertable[d].change = "0"
         playertable[e].change = "0"
         playertable[f].change = "0"
@@ -592,7 +608,7 @@ def pointAssignment():
         playertable[h].change = "+2"
         playertable[i].points = playertable[i].points + 2
         playertable[i].change = "+2"
-        print(playertable[g].role + " and " + playertable[i].role + " both allied. Both parties gain 2 points.")
+        log.write(playertable[g].role + "'s team and " + playertable[i].role + " both allied. Both parties gain 2 points.\n")
     elif playertable[g].vote == "A" and playertable[i].vote == "B":
         playertable[g].points = playertable[g].points - 2
         playertable[g].change = "-2"
@@ -600,7 +616,7 @@ def pointAssignment():
         playertable[h].change = "-2"
         playertable[i].points = playertable[i].points + 3
         playertable[i].change = "+3"
-        print(playertable[g].role + " allied while " + playertable[i].role + " betrayed. " + playertable[g].role + " loses 2 points while " + playertable[i].role + " gains 3.")
+        log.write(playertable[g].role + "'s team allied while " + playertable[i].role + " betrayed. " + playertable[g].role + " loses 2 points while " + playertable[i].role + " gains 3.\n")
     elif playertable[g].vote == "B" and playertable[i].vote == "A":
         playertable[g].points = playertable[g].points + 3
         playertable[g].change = "+3"
@@ -608,9 +624,9 @@ def pointAssignment():
         playertable[h].change = "+3"
         playertable[i].points = playertable[i].points - 2
         playertable[i].change = "-2"
-        print(playertable[i].role + " allied while " + playertable[g].role + " betrayed. " + playertable[i].role + " loses 2 points while " + playertable[g].role + " gains 3.")
+        log.write(playertable[i].role + " allied while " + playertable[g].role + "'s team betrayed. " + playertable[i].role + " loses 2 points while " + playertable[g].role + "'s team gains 3.\n")
     else:
-        print(playertable[g].role + " and " + playertable[i].role + " both betrayed each other. Nothing happened with their scores.")
+        log.write(playertable[g].role + "'s team and " + playertable[i].role + " both betrayed each other. Nothing happened with their scores.\n")
         playertable[g].change = "0"
         playertable[h].change = "0"
         playertable[i].change = "0"
@@ -848,6 +864,9 @@ def imgChart():
     clock = pg.time.Clock()
     keepGoing = True
     sPointsGroup.update()
+    log.write("Points Update:\n")
+    for x in range(9):
+        log.write(playertable[x].name + ": " + str(playertable[x].points) + "\n")
     while keepGoing:
         clock.tick(30)
         for event in pg.event.get():
@@ -909,6 +928,7 @@ def StatusScreen():
     for x in range(9):
         if playertable[x].points <= 0:
             if playertable[x].alive:
+                log.write(playertable[x].name + random.choice(deathmessage) + "\n")
                 playertable[x].kill()
                 if not nvlText.text:
                     nvlText.text = playertable[x].name + random.choice(deathmessage)
@@ -924,6 +944,7 @@ def StatusScreen():
         if playertable[x].points >= 9:
             playertable[x].won = True
             temp = (playertable[x].name + " has " + str(playertable[x].points) + " points, and leaves the facility.")
+            log.write(playertable[x].name + " won the game!\n")
             if not nvlText.text:
                 nvlText.text = temp
             elif not nvlText2.text:
@@ -932,8 +953,6 @@ def StatusScreen():
                 nvlText3.text = temp
             elif not nvlText4.text:
                 nvlText4.text = temp
-
-            print("playerwin DETECTED")
             eventflag = True
             winflag = True
     labelGroup = pg.sprite.Group(nvlText,nvlText2,nvlText3)

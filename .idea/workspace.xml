@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/ambidex.py" line="155" mnemonic="9" />
+    <bookmark url="file://$PROJECT_DIR$/ambidex.py" line="158" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7721b12a-6553-4db3-91ac-83537f95ee5e" name="Default" comment="" />
@@ -17,8 +17,8 @@
       <file leaf-file-name="ambidex.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ambidex.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1744">
-              <caret line="690" column="21" selection-start-line="690" selection-start-column="21" selection-end-line="690" selection-end-column="21" />
+            <state relative-caret-position="256">
+              <caret line="363" column="17" selection-start-line="363" selection-start-column="17" selection-end-line="363" selection-end-column="17" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -26,13 +26,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ambidex_old_text.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ambidex_old_text.py">
+      <file leaf-file-name="logtest.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/logtest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="244" selection-start-line="244" selection-end-line="273" selection-end-column="13" />
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="4" selection-end-column="21" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,7 +58,9 @@
       <find>points</find>
       <find>death</find>
       <find>textBox</find>
-      <find>layout =</find>
+      <find />
+      <find>round</find>
+      <find>log.write</find>
     </findStrings>
     <replaceStrings>
       <replace>npoints</replace>
@@ -77,6 +79,7 @@
         <option value="$PROJECT_DIR$/pygame_testing.py" />
         <option value="$PROJECT_DIR$/ambidex_old_text.py" />
         <option value="$PROJECT_DIR$/temp.py" />
+        <option value="$PROJECT_DIR$/logtest.py" />
         <option value="$PROJECT_DIR$/ambidex.py" />
       </list>
     </option>
@@ -133,7 +136,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ambidex">
+  <component name="RunManager" selected="Python.logtest">
     <configuration name="ambidex" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="python-ambidex-game" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -147,6 +150,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ambidex.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="logtest" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="python-ambidex-game" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/logtest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -192,10 +213,12 @@
       <item itemvalue="Python.ambidex" />
       <item itemvalue="Python.table-printing" />
       <item itemvalue="Python.pygame_testing" />
+      <item itemvalue="Python.logtest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.ambidex" />
+        <item itemvalue="Python.logtest" />
         <item itemvalue="Python.pygame_testing" />
         <item itemvalue="Python.table-printing" />
       </list>
@@ -207,10 +230,10 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.091675445" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.091675445" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="8" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3263158" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3263158" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -225,16 +248,16 @@
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.091675445" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3263158" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Python Console" order="8" />
     </layout-to-restore>
@@ -248,23 +271,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ambidex_old_text.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3791">
-          <caret line="225" column="25" selection-start-line="225" selection-start-column="25" selection-end-line="225" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/personalities.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ambidex.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2431">
@@ -618,7 +624,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ambidex_old_text.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
+        <state relative-caret-position="17">
           <caret line="244" selection-start-line="244" selection-end-line="273" selection-end-column="13" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -626,10 +632,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ambidex_log_2019-01-10.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logtest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="4" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ambidex.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1744">
-          <caret line="690" column="21" selection-start-line="690" selection-start-column="21" selection-end-line="690" selection-end-column="21" />
+        <state relative-caret-position="256">
+          <caret line="363" column="17" selection-start-line="363" selection-start-column="17" selection-end-line="363" selection-end-column="17" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
