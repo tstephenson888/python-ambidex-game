@@ -42,6 +42,7 @@ class ABPlayer():
     def kill(self):
         self.alive = False
         print(self.name + random.choice(deathmessage))
+
 p1 = ABPlayer("DEBUG")
 p2 = ABPlayer("DEBUG")
 p3 = ABPlayer("DEBUG")
@@ -979,6 +980,7 @@ def StatusScreen():
         labelGroup.draw(screen)
         pg.mouse.set_visible(True)
         pg.display.flip()
+
 def main():
     setup()
     setup2()

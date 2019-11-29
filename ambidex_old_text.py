@@ -1,6 +1,8 @@
 import os
 import random
 import time
+import datetime
+import sys
 
 class ABPlayer():
 
@@ -29,6 +31,9 @@ deathmessage = [" is no longer with us.",
                 " stopped breathing.", " perished.", " isn't coming back from that.",
                 " is in a better place now.",
                 " forgot to write their will.", " welcomed Death with open arms.", " expired."]
+log = open("ambidex_log_" + str(datetime.date.today()) + "_" + str(random.randint(0,99999)) + ".txt","w+")
+log.write("Ambidex Game Log: " + str(datetime.datetime.now()) + "\n\n")
+playable = False
 
 def wait():
 
@@ -48,6 +53,8 @@ def intro():
         global p8
         global p9
         global playertable
+
+
 
 
         print("Hello! This is a simulation for the Ambidex Game found in Zero Escape: Virtue's Last Reward.")
@@ -110,6 +117,11 @@ def intro():
         print(p8.name)
         print(p9.name)
         playertable = [p1, p2, p3, p4, p5, p6, p7, p8, p9]
+
+
+        log.write("Participants:\n" + playertable[0].name + ", " + playertable[1].name + ", " + playertable[2].name + ", "
+          + playertable[3].name + ", " + playertable[4].name + ", " + playertable[5].name + ", " + playertable[6].name
+          + ", " + playertable[7].name + ", " + playertable[8].name + ".\n\n")
         linebreak()
         print("Finally, would you like to have a part in the game? You can take control of your first player (" + p1.name + ") and influence their decisions in the game.")
         print("This is entirely optional. If you decline, they will make choices randomly.")
@@ -127,19 +139,26 @@ roundnum = 1
 def shuffleteams():
     # create a table from the players, randomize role
     print("The teams are being scrambled!")
+    log.write("Team Shuffle:\n\n")
     random.shuffle(playertable)
     playertable[0].role = "Red Pair"
     playertable[1].role = "Red Pair"
+    log.write(playertable[0].role + ": " + playertable[0].name + " & " +  playertable[1].name + '\n')
 
     playertable[2].role = "Blue Pair"
     playertable[3].role = "Blue Pair"
+    log.write(playertable[2].role + ": " + playertable[2].name + " & " + playertable[3].name + '\n')
 
     playertable[4].role = "Green Pair"
     playertable[5].role = "Green Pair"
+    log.write(playertable[4].role + ": " + playertable[4].name + " & " + playertable[5].name + '\n')
 
     playertable[6].role = "Red Solo"
+    log.write(playertable[6].role + ": " + playertable[6].name + '\n')
     playertable[7].role = "Blue Solo"
+    log.write(playertable[7].role + ": " + playertable[7].name + '\n')
     playertable[8].role = "Green Solo"
+    log.write(playertable[8].role + ": " + playertable[8].name + '\n')
     linebreak()
     # Print the new pair/solo arrangements
     print(playertable[0].name + " and " + playertable[1].name + " are together as the Red Pair.")
@@ -153,6 +172,7 @@ def shuffleteams():
 
 
 def layoutselect():
+    log.write("=== Round " + str(roundnum) + " ===\n\n")
     global layout
     print("You can choose a layout for the voting.")
     print("Layout A: Red Pair vs. Blue Solo, Blue Pair vs. Green Solo, Green Pair vs. Red Solo")
@@ -183,6 +203,7 @@ def abroller():
 def voting():
     global layout
     global playertable
+    global playable
     if layout != "A" and layout != "B" and layout != "C" and layout != "R":
         layout = input("That is not a valid input. Please try again. (enter [A], [B], [C], [R]ANDOM) ")
         voting()
@@ -279,18 +300,26 @@ def voting():
         playertable[b].points = playertable[b].points + 2
         playertable[c].points = playertable[c].points + 2
         print(playertable[a].role + " and " + playertable[c].role + " both allied. Both parties gain 2 points.")
+        log.write(
+            playertable[a].role + "'s team and " + playertable[c].role + " both allied. Both parties gain 2 points.\n")
     elif playertable[a].vote == "A" and playertable[c].vote == "B":
         playertable[a].points = playertable[a].points - 2
         playertable[b].points = playertable[b].points - 2
         playertable[c].points = playertable[c].points + 3
         print(playertable[a].role + " allied while " + playertable[c].role + " betrayed. " + playertable[a].role + " loses 2 points while " + playertable[c].role + " gains 3.")
+        log.write(playertable[a].role + "'s team allied while " + playertable[c].role + " betrayed. " + playertable[
+            a].role + "'s team loses 2 points while " + playertable[c].role + " gains 3.\n")
     elif playertable[a].vote == "B" and playertable[c].vote == "A":
         playertable[a].points = playertable[a].points + 3
         playertable[b].points = playertable[b].points + 3
         playertable[c].points = playertable[c].points - 2
         print(playertable[c].role + " allied while " + playertable[a].role + " betrayed. " + playertable[c].role + " loses 2 points while " + playertable[a].role + " gains 3.")
+        log.write(playertable[c].role + " allied while " + playertable[a].role + "'s team betrayed. " + playertable[
+            c].role + " loses 2 points while " + playertable[a].role + "'s team gains 3.\n")
     else:
         print(playertable[a].role + " and " + playertable[c].role + " both betrayed each other. Nothing happened with their scores.")
+        log.write(playertable[a].role + " and " + playertable[
+            c].role + " both betrayed each other. Nothing happened with their scores.\n")
     time.sleep(2)
     linebreak()
     if playertable[d].vote == "A" and playertable[f].vote == "A":
@@ -298,20 +327,28 @@ def voting():
         playertable[e].points = playertable[e].points + 2
         playertable[f].points = playertable[f].points + 2
         print(playertable[d].role + " and " + playertable[f].role + " both allied. Both parties gain 2 points.")
+        log.write(
+            playertable[d].role + "'s team and " + playertable[f].role + " both allied. Both parties gain 2 points.\n")
     elif playertable[d].vote == "A" and playertable[f].vote == "B":
         playertable[d].points = playertable[d].points - 2
         playertable[e].points = playertable[e].points - 2
         playertable[f].points = playertable[f].points + 3
         print(playertable[d].role + " allied while " + playertable[f].role + " betrayed. " + playertable[
             a].role + " loses 2 points while " + playertable[f].role + " gains 3.")
+        log.write(playertable[d].role + "'s team allied while " + playertable[f].role + " betrayed. " + playertable[
+            d].role + "'s team loses 2 points while " + playertable[f].role + " gains 3.\n")
     elif playertable[d].vote == "B" and playertable[f].vote == "A":
         playertable[d].points = playertable[d].points + 3
         playertable[e].points = playertable[e].points + 3
         playertable[f].points = playertable[f].points - 2
         print(playertable[f].role + " allied while " + playertable[d].role + " betrayed. " + playertable[
             c].role + " loses 2 points while " + playertable[d].role + " gains 3.")
+        log.write(playertable[f].role + " allied while " + playertable[d].role + "'s team betrayed. " + playertable[
+            c].role + " loses 2 points while " + playertable[d].role + "'s team gains 3.\n")
     else:
         print(playertable[d].role + " and " + playertable[f].role + " both betrayed each other. Nothing happened with their scores.")
+        log.write(playertable[d].role + "'s team and " + playertable[
+            f].role + " both betrayed each other. Nothing happened with their scores.\n")
     time.sleep(2)
     linebreak()
     if playertable[g].vote == "A" and playertable[i].vote == "A":
@@ -319,18 +356,26 @@ def voting():
         playertable[h].points = playertable[h].points + 2
         playertable[i].points = playertable[i].points + 2
         print(playertable[g].role + " and " + playertable[i].role + " both allied. Both parties gain 2 points.")
+        log.write(
+            playertable[g].role + "'s team and " + playertable[i].role + " both allied. Both parties gain 2 points.\n")
     elif playertable[g].vote == "A" and playertable[i].vote == "B":
         playertable[g].points = playertable[g].points - 2
         playertable[h].points = playertable[h].points - 2
         playertable[i].points = playertable[i].points + 3
         print(playertable[g].role + " allied while " + playertable[i].role + " betrayed. " + playertable[g].role + " loses 2 points while " + playertable[i].role + " gains 3.")
+        log.write(playertable[g].role + "'s team allied while " + playertable[i].role + " betrayed. " + playertable[
+            g].role + " loses 2 points while " + playertable[i].role + " gains 3.\n")
     elif playertable[g].vote == "B" and playertable[i].vote == "A":
         playertable[g].points = playertable[g].points + 3
         playertable[h].points = playertable[h].points + 3
         playertable[i].points = playertable[i].points - 2
         print(playertable[i].role + " allied while " + playertable[g].role + " betrayed. " + playertable[i].role + " loses 2 points while " + playertable[g].role + " gains 3.")
+        log.write(playertable[i].role + " allied while " + playertable[g].role + "'s team betrayed. " + playertable[
+            i].role + " loses 2 points while " + playertable[g].role + "'s team gains 3.\n")
     else:
         print(playertable[g].role + " and " + playertable[i].role + " both betrayed each other. Nothing happened with their scores.")
+        log.write(playertable[g].role + "'s team and " + playertable[
+            i].role + " both betrayed each other. Nothing happened with their scores.\n")
     linebreak()
     wait()
     # quickly display new scores
@@ -338,6 +383,9 @@ def voting():
 
 
     print("")
+    log.write("Points Update:\n\n")
+    for x in range(9):
+        log.write(playertable[x].name + ": " + str(playertable[x].points) + "\n")
     print(playertable[a].name + ": " + str(playertable[a].points))
     time.sleep(0.15)
     print(playertable[b].name + ": " + str(playertable[b].points))
@@ -362,6 +410,7 @@ def winCheck():
         for x in range(0,9):
             if playertable[x].points <= 0:
                 if playertable[x].alive:
+                    log.write(playertable[x].name + random.choice(deathmessage) + "\n")
                     playertable[x].kill()
                 if playable:
                     if not p1.alive:
@@ -372,11 +421,13 @@ def winCheck():
             if playertable[x].points >= 9:
                 playertable[x].won = True
                 print(playertable[x].name + " has " + str(playertable[x].points) + " points, and leaves the facility.")
+                log.write(playertable[x].name + " won the game!\n")
 
 
         for x in range (0,9):
             if playertable[x].won:
-                # gamelog.close()
+
+                log.close()
                 exit()
 
                 # TODO: Write the whole simulation to the log when the game is won
@@ -384,12 +435,15 @@ def winCheck():
 
 
 def main():
-        intro()
-        shuffleteams()
-        linebreak()
-        layoutselect()
-        linebreak()
-        voting()
-        linebreak()
-        if not winCheck():
-            main()
+    shuffleteams()
+    linebreak()
+    layoutselect()
+    linebreak()
+    voting()
+    linebreak()
+    winCheck()
+
+intro()
+while not winCheck():
+    main()
+
